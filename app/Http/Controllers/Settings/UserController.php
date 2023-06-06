@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         if(currentUser() == 'owner'){
             $branches=Branch::where(company())->get();
-            $roles=Role::whereIn('id',[3,4])->get();
+            $roles=Role::whereIn('id',[3,4,5,6])->get();
         }else{
             $branches=Branch::where(company())->get();
             $roles=Role::where('id',4)->get();

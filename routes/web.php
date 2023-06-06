@@ -44,6 +44,8 @@ use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isOwner;
 use App\Http\Middleware\isSalesmanager;
 use App\Http\Middleware\isSalesman;
+use App\Http\Middleware\isAccounts;
+use App\Http\Middleware\isHr;
 
 /*
 |--------------------------------------------------------------------------
@@ -179,6 +181,20 @@ Route::group(['middleware'=>isSalesmanager::class],function(){
 Route::group(['middleware'=>isSalesman::class],function(){
     Route::prefix('salesman')->group(function(){
         Route::get('/dashboard', [dash::class,'salesmanDashboard'])->name('salesman.dashboard');
+        
+    });
+});
+
+Route::group(['middleware'=>isAccounts::class],function(){
+    Route::prefix('accounts')->group(function(){
+        Route::get('/dashboard', [dash::class,'accountsDashboard'])->name('accounts.dashboard');
+        
+    });
+});
+
+Route::group(['middleware'=>isHr::class],function(){
+    Route::prefix('hr')->group(function(){
+        Route::get('/dashboard', [dash::class,'hrDashboard'])->name('hr.dashboard');
         
     });
 });

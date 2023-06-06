@@ -33,4 +33,16 @@ class DashboardController extends Controller
     public function salesmanDashboard(){
         return view('dasbhoard.salesman');
     }
+    /*
+    * Accounts dashboard
+    */
+    public function accountsDashboard(){
+        return view('dasbhoard.accounts');
+    }
+    /*
+    * hrDashboard dashboard
+    */
+    public function hrDashboard(){
+        return view('dasbhoard.hr');
+    }
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD | @yield('siteTitle', 'POS')</title>
+    <title>Affixfashion | @yield('siteTitle', 'Dashboard')</title>
     
 <link rel="stylesheet" href="{{ asset('assets/css/main/app.css') }}">
 <link rel="stylesheet" href="{{ asset('assets/css/main/style.css') }}">
@@ -97,11 +97,11 @@
                 <div class="container">
                     <div class="footer clearfix mb-0 text-muted">
                         <div class="float-start">
-                            <p>2022 &copy; POS</p>
+                            <p>2023 &copy; Affixfashion</p>
                         </div>
                         <div class="float-end">
                             <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                                href="#">Nasim</a></p>
+                                href="#">Biplab Uddin</a></p>
                         </div>
                     </div>
                 </div>
