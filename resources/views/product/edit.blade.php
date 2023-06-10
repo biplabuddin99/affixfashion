@@ -129,17 +129,26 @@
                                                 placeholder="Product description" name="description">{{ old('description',$product->description)}}</textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="product-image" class="form-label">Product Multiple Image</label>
-                                            <input type="file" class="form-control" multiple name="product_multiple_image[]">
-                                            @error('product_multiple_image')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
+                                    <div class="row imggl">
+                                        <label for="status"><b>{{__('Product Multiple Image')}}:</b></label>
+                                        <div class="col-5 col-sm-3 mb-3">
+                                            <input type="file" class="dropify" data-height="100" name="product_multiple_image[]"/>
+                                        </div> 
+                                        <div class="col-2 addbtn">
+                                            <button type="button" class="btn btn-primary" onclick="addGallery()">Add More</button>
+                                        </div> 
+                                    </div> <!-- end row -->
+                                    <div class="row imggl">
+                                        @forelse($multi_photo as $mp)
+                                        <div class="col-5 col-sm-3 mb-3 text-center del{{$mp->id}}">
+                                            <img class="modImg w-100" src="{{asset('images/product/multiple/'.company()['company_id'].'/'.$mp->product_multiple_image)}}" alt="" />
+                                            <button type="button" onclick="deletedata({{$mp->id}})" class="btn btn-danger btn-sm mt-2">Delete</button>
                                         </div>
-                                    </div>  
+                                        @empty
+    
+                                        @endforelse
+                                        
+                                    </div>
                                     
                                     <div class="col-12 d-flex justify-content-end">
                                     {{-- <img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$product->image)}}" alt=""> --}}
@@ -171,10 +180,6 @@
     function show_childcat(e){
         $('.childcat').hide();
         $('.childcat'+e).show();
-    }
-
-    
-   
-    
+    }    
 </script>
 @endpush

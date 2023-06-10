@@ -128,7 +128,8 @@ class ProductController extends Controller
         $brands = Brand::where(company())->get();
         $units = Unit::all();
         $product= Product::findOrFail(encryptor('decrypt',$id));
-        return view('product.edit',compact('categories','subcategories','childcategories','brands','units','product'));
+        $multi_photo = ProductImage::where('product_id',encryptor('decrypt',$id))->get();
+        return view('product.edit',compact('categories','subcategories','childcategories','brands','units','product','multi_photo'));
     }
 
     /**
