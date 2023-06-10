@@ -13,15 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('currencies', function (Blueprint $table) {
+        Schema::create('product_images', function (Blueprint $table) {
             $table->id();
-            $table->string('currency_name');
-            $table->string('currency_symbol');
-            $table->string('currency_port');
-            $table->string('currency_rate');
-            $table->string('status')->default(0);
+            $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
+            $table->string('product_multiple_image');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -32,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('currencies');
+        Schema::dropIfExists('product_images');
     }
 };

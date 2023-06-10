@@ -13,6 +13,7 @@
 <link rel="shortcut icon" href="{{ asset('assets/images/logo/favicon.png') }}" type="image/png">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
 <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/css/dropify.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
     
 <link rel="stylesheet" href="{{ asset('assets/css/shared/iconly.css') }}">
 <script
@@ -122,6 +123,11 @@
 <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
 {!! Toastr::message() !!}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+    $('.dropify').dropify();
+</script>
 @stack('scripts')
 
 </body>

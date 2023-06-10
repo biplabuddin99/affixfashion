@@ -124,7 +124,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">{{__('Image')}}</label>
-                                            <input type="file" id="image" class="form-control"
+                                            <input type="file" id="image" class="form-control dropify"
                                                 placeholder="Image" name="image">
                                                 @if($errors->has('image'))
                                                     <span class="text-danger"> {{ $errors->first('image') }}</span>
@@ -134,11 +134,21 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="description">{{__('Description')}}</label>
-                                            <textarea  class="form-control" id="description"
+                                            <textarea  class="form-control" id="description" rows="8"
                                                 placeholder="Product description" name="description">{{ old('description')}}</textarea>
                                         </div>
                                     </div>
-                                    
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="description">{{__('Product Multiple Image')}}</label>
+                                            <input type="file" class="form-control" multiple name="product_multiple_image[]">
+                                            @error('product_multiple_image')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                            @enderror
+                                        </div>
+                                    </div>                                   
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         

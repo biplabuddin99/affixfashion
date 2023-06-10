@@ -114,21 +114,35 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">{{__('Image')}}</label>
-                                            <input type="file" id="image" class="form-control"
-                                                placeholder="Image" name="image">
-                                                
+                                            <input type="file" class="form-control dropify" name="image" data-default-file="{{ asset('uploads/product_photos') }}/{{ $product->image }}">
+                                            @error('image')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror                                            
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="description">{{__('Description')}}</label>
-                                            <textarea  class="form-control" id="description"
+                                            <textarea  class="form-control" id="description" rows="8"
                                                 placeholder="Product description" name="description">{{ old('description',$product->description)}}</textarea>
                                         </div>
                                     </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="product-image" class="form-label">Product Multiple Image</label>
+                                            <input type="file" class="form-control" multiple name="product_multiple_image[]">
+                                            @error('product_multiple_image')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                        </div>
+                                    </div>  
                                     
                                     <div class="col-12 d-flex justify-content-end">
-                                    <img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$product->image)}}" alt="">
+                                    {{-- <img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$product->image)}}" alt=""> --}}
                                         <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         
                                     </div>

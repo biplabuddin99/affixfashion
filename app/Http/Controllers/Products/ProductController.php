@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Products;
 use App\Http\Controllers\Controller;
 
 use App\Models\Products\Product;
+use App\Models\Products\ProductImage;
 use App\Models\Products\Category;
 use App\Models\Products\Subcategory;
 use App\Models\Products\Childcategory;
@@ -15,6 +16,8 @@ use App\Http\Requests\Product\AddRequest;
 use App\Http\Requests\Product\UpdateRequest;
 use App\Http\Traits\ResponseTrait;
 use App\Http\Traits\ImageHandleTraits;
+use Intervention\Image\Facades\Image;
+use Brian2694\Toastr\Facades\Toastr;
 use Exception;
 use DB;
 use DNS1D;
@@ -56,7 +59,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(AddRequest $request)
-    {
+    { 
         try{
             $p= new Product;
             $p->bar_code=company()['company_id'].time();
@@ -75,10 +78,9 @@ class ProductController extends Controller
             if($request->has('image'))
                 $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
 
-            if($p->save())
+            $p->save();
+                $this->multiple_image__upload($request, $p->id);
                 return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
-            else
-                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
             dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
@@ -310,4 +312,5 @@ class ProductController extends Controller
 
         echo json_encode($barcode);
     }
+
 }
