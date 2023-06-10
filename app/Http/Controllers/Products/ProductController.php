@@ -79,7 +79,23 @@ class ProductController extends Controller
                 $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
 
             $p->save();
-                $this->multiple_image__upload($request, $p->id);
+            
+            if($p->save()){
+                if($request->has('product_multiple_image')){
+                    foreach($request->product_multiple_image as $imgdata){
+                        if($imgdata){
+                            $proPhoto=new ProductImage;
+                            $proPhoto->product_id = $p->id;
+                        
+                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/multiple/'.company()['company_id'],true,637,415,false);
+                            $proPhoto->save();
+                        }
+                    }
+                }
+                return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+            } else{
+                return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+            }
                 return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
         }catch(Exception $e){
             dd($e);

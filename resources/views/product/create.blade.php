@@ -124,7 +124,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">{{__('Image')}}</label>
-                                            <input type="file" id="image" class="form-control dropify"
+                                            <input type="file" data-height="150" id="image" class="form-control dropify"
                                                 placeholder="Image" name="image">
                                                 @if($errors->has('image'))
                                                     <span class="text-danger"> {{ $errors->first('image') }}</span>
@@ -134,20 +134,18 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="description">{{__('Description')}}</label>
-                                            <textarea  class="form-control" id="description" rows="8"
+                                            <textarea  class="form-control" id="description" rows="6"
                                                 placeholder="Product description" name="description">{{ old('description')}}</textarea>
                                         </div>
                                     </div>
-                                    <div class="col-md-6 col-12">
-                                        <div class="form-group">
-                                            <label for="description">{{__('Product Multiple Image')}}</label>
-                                            <input type="file" class="form-control" multiple name="product_multiple_image[]">
-                                            @error('product_multiple_image')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                            @enderror
-                                        </div>
+                                    <div class="row imggl">
+                                        <label for="status"><b>{{__('Product Multiple Image')}}:</b></label>
+                                        <div class="col-5 col-sm-3 mb-3">
+                                            <input type="file" class="dropify" data-height="100" name="product_multiple_image[]"/>
+                                        </div> 
+                                        <div class="col-2 addbtn">
+                                            <button type="button" class="btn btn-primary" onclick="addGallery()">Add More</button>
+                                        </div> 
                                     </div>                                   
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
@@ -179,9 +177,11 @@
         $('.childcat').hide();
         $('.childcat'+e).show();
     }
-
-    
-   
-    
+</script>
+<script>
+    function addGallery(){
+        $('.addbtn').before('<div class="col-5 col-sm-3 mb-3"><input type="file" class="dropify" data-height="100" name="product_multiple_image[]"/></div> ');
+        $(".dropify").dropify({messages:{default:"Drag and drop a file here or click",replace:"Drag and drop or click to replace",remove:"Remove",error:"Ooops, something wrong appended."},error:{fileSize:"The file size is too big (1M max)."}});
+    }
 </script>
 @endpush
