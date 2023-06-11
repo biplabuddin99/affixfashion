@@ -158,7 +158,6 @@ class ProductController extends Controller
                     $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
                 }
             }
-
             $p->company_id=company()['company_id'];
             $p->status=1;
             if($p->save()){
