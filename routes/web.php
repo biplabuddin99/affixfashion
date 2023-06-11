@@ -123,6 +123,7 @@ Route::group(['middleware'=>isOwner::class],function(){
         Route::resource('subcategory',subcat::class,['as'=>'owner']);
         Route::resource('childcategory',childcat::class,['as'=>'owner']);
         Route::resource('product',product::class,['as'=>'owner']);
+        Route::get('/multiple-image', [product::class,'multiple_img'])->name('owner.multiple_img');
         Route::get('/plabel',[product::class,'label'])->name('owner.plabel');
         Route::get('/qrcodepreview',[product::class,'qrcodepreview'])->name('owner.qrcodepreview');
         Route::get('/barcodepreview',[product::class,'barcodepreview'])->name('owner.barcodepreview');

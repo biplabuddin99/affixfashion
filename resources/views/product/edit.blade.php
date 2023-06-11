@@ -104,11 +104,10 @@
                                         <div class="form-group">
                                             <label for="purchase_price">{{__('Purchase Price')}}</label>
                                             <input type="text" id="purchase_price" class="form-control"
-                                                placeholder="Purchase Price" value="{{ old('purchase_price',$product->purchase_price)}}" name="purchase_price">
-                                                @if($errors->has('purchase_price'))
-                                                    <span class="text-danger"> {{ $errors->first('purchase_price') }}</span>
-                                                @endif
-                                                
+                                            placeholder="Purchase Price" value="{{ old('purchase_price',$product->purchase_price)}}" name="purchase_price">
+                                            @if($errors->has('purchase_price'))
+                                                <span class="text-danger"> {{ $errors->first('purchase_price') }}</span>
+                                            @endif                                            
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
@@ -181,5 +180,18 @@
         $('.childcat').hide();
         $('.childcat'+e).show();
     }    
+</script>
+<script>
+    function addGallery(){
+        $('.addbtn').before('<div class="col-5 col-sm-3 mb-3"><input type="file" class="dropify" data-height="100" name="image[]"/></div> ');
+        $(".dropify").dropify({messages:{default:"Drag and drop a file here or click",replace:"Drag and drop or click to replace",remove:"Remove",error:"Ooops, something wrong appended."},error:{fileSize:"The file size is too big (1M max)."}});
+    }
+
+    function deletedata(e){
+        $.get("{{route(currentUser().'.multiple_img')}}?id="+e, function(data, status){
+            alert("Image Deleted!");
+            $('.del'+e).remove();
+        });
+    }
 </script>
 @endpush

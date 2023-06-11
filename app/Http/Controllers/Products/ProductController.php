@@ -18,6 +18,7 @@ use App\Http\Traits\ResponseTrait;
 use App\Http\Traits\ImageHandleTraits;
 use Intervention\Image\Facades\Image;
 use Brian2694\Toastr\Facades\Toastr;
+use Illuminate\Support\Facades\File;
 use Exception;
 use DB;
 use DNS1D;
@@ -77,9 +78,6 @@ class ProductController extends Controller
             $p->status=1;
             if($request->has('image'))
                 $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
-
-            $p->save();
-            
             if($p->save()){
                 if($request->has('product_multiple_image')){
                     foreach($request->product_multiple_image as $imgdata){
@@ -87,7 +85,7 @@ class ProductController extends Controller
                             $proPhoto=new ProductImage;
                             $proPhoto->product_id = $p->id;
                         
-                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/multiple/'.company()['company_id'],true,637,415,false);
+                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/'.company()['company_id'],true,637,415,false);
                             $proPhoto->save();
                         }
                     }
@@ -96,7 +94,6 @@ class ProductController extends Controller
             } else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             }
-                return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
         }catch(Exception $e){
             dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
@@ -164,10 +161,21 @@ class ProductController extends Controller
 
             $p->company_id=company()['company_id'];
             $p->status=1;
-            if($p->save())
+            if($p->save()){
+                if($request->has('product_multiple_image')){
+                    foreach($request->product_multiple_image as $imgdata){
+                        if($imgdata){
+                            $proPhoto=new ProductImage;
+                            $proPhoto->product_id = $p->id;                      
+                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/'.company()['company_id'],true,637,415,false);
+                            $proPhoto->save();
+                        }
+                    }
+                }
                 return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
-            else
+            } else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+            }
         }catch(Exception $e){
             //dd($e);
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
@@ -329,5 +337,22 @@ class ProductController extends Controller
 
         echo json_encode($barcode);
     }
+
+    // public function multiple_img(Request $request)
+    // {
+    //     $pro= ProductImage::findOrFail($request->id);
+    //     $pro->delete();
+    // }
+
+    public function multiple_img(Request $request){
+        $images=ProductImage::findOrFail($request->id);
+        if($this->deleteImage($images->product_multiple_image,'images/product/'.company()['company_id']))
+    //     if (File::exists("'images/product/'.company()['company_id']".$images->product_multiple_image)) {
+    //        File::delete("'images/product/'.company()['company_id']".$images->product_multiple_image);
+    //    }
+
+       ProductImage::find($request->id)->delete();
+       return back();
+   }
 
 }
