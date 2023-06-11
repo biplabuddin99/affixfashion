@@ -59,7 +59,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="topbarUserDropdown">
                         <li><a class="dropdown-item" href="#">{{__('My Account') }}</a></li>
-                        {{-- <li><a class="dropdown-item" href="{{route(currentUser().'.profile')}}">{{__('Profile')}}</a></li> --}}
+                        <li><a class="dropdown-item" href="{{route(currentUser().'.profile')}}">{{__('Profile')}}</a></li>
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item" href="{{route('logOut')}}">{{__('Logout') }}</a></li>
                     </ul>

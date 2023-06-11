@@ -188,6 +188,10 @@ Route::group(['middleware'=>isSalesman::class],function(){
 Route::group(['middleware'=>isAccounts::class],function(){
     Route::prefix('accounts')->group(function(){
         Route::get('/dashboard', [dash::class,'accountsDashboard'])->name('accounts.dashboard');
+
+        //Accounts profile
+        Route::get('/profile', [profile::class,'ownerProfile'])->name('accounts.profile');
+        Route::post('/profile', [profile::class,'ownerProfile'])->name('accounts.profile.update');
         
     });
 });
