@@ -25,7 +25,7 @@
         <div class="col-lg-6 offset-3 col-12">
             <div id="auth-left">
                 <div class="auth-logo text-center">
-                    <a href="#"><img src="{{ asset('assets/images/logo/logo1.svg')}}" alt="Logo"></a>
+                    <a href="#"><img src="{{ asset('assets/images/logo/Af3-01.png')}}" alt="Logo"></a>
                 </div>
 
                 @yield('content')
