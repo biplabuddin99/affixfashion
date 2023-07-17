@@ -51,6 +51,7 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        {{ $subcategories->links() }}
                     </div>
                 </div>
             </div>
