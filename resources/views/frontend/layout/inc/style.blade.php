@@ -1,4 +1,4 @@
-<link rel="shortcut icon" type="image/png" href="{{ asset('assets/frontend') }}/images/favicon.png">
+<link rel="shortcut icon" type="image/png" href="{{ asset('assets/frontend') }}/images/browserlogo.png">
 <!-- Place favicon.ico in the root directory -->
 <!-- all css here -->
 <!-- bootstrap v4.0.0-beta.2 css -->
