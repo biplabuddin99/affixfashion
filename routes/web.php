@@ -57,10 +57,15 @@ use App\Http\Middleware\isHr;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/* frontend route */
+Route::get('/', function(){
+    return view('frontend.pages.home');
+});
 
+/* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');
 Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
-Route::get('/', [auth::class,'signInForm'])->name('signIn');
+Route::get('/admin', [auth::class,'signInForm'])->name('signIn');
 Route::get('/login', [auth::class,'signInForm'])->name('login');
 Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
