@@ -58,6 +58,9 @@ use App\Http\Middleware\isHr;
 |
 */
 /* frontend route */
+Route::get('home', function(){
+    return view('frontend.pages.home');
+})->name('home');
 Route::get('/', function(){
     return view('frontend.pages.home');
 });

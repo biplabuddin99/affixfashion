@@ -111,7 +111,7 @@ a {
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
     text-decoration: none;
-    color: #333;
+    color: #eee7e7;
 }
 
 a:hover {
@@ -175,7 +175,7 @@ div {
 
 .bg-2 {
     background: #fff;
-    border-bottom: 1px solid #efefef;
+    border: 3px solid green;
 }
 
 .bg-img-1 {
@@ -467,7 +467,7 @@ header-area start
 }
 
 .mainmenu ul li {
-    padding: 30px 20px;
+    padding: 13px 28px;
     position: relative;
 }
 
@@ -486,6 +486,11 @@ header-area start
 .mainmenu ul li:hover>a,
 .mainmenu ul li.active>a {
     color: #ef4836;
+    background: #e9e6e6;
+    padding: 3px 15px 3px 15px;
+    font-weight: 700;
+    left: calc(100% + 2px);
+    top:0px;
 }
 
 .mainmenu ul li>ul {
@@ -503,7 +508,7 @@ header-area start
 }
 
 .search-cart-wrapper li {
-    padding: 30px 20px 30px 0px;
+    padding: 15px 20px 30px 0px;
     position: relative;
     color: #fff;
 }
@@ -740,7 +745,9 @@ header-area start
 
 .header-bottom {
     position: relative;
-    border-bottom: 1px solid #ddd;
+    background-color: rgb(5, 5, 90);
+    border-radius: 54px;
+    height: 50px;
 }
 
 .responsive-menu-tigger a {
@@ -805,7 +812,18 @@ header-area start
     padding-left: 20px;
 }
 
+.sub_menu{
+    display: none;
+    position: absolute;
+    width: 100%;
+    left: calc(100% + 0px);
+    top:0px;
+}
+.sub_list:hover>ul{
+    display: block;
+    top:0px;
 
+}
 
 
 /*------responsive-menu area end------*/
@@ -817,7 +835,7 @@ header-area start
 /*------slider-area start------*/
 
 .swiper-container {
-    height: 750px;
+    height: 350px;
 }
 
 
@@ -883,8 +901,8 @@ header-area start
 
 .slider-shape {
     background:rgba(255,255,255,.8);
-    width: 880px;
-    height: 300px;
+    width: 600px;
+    height: 280px;
     text-align: center;
     margin: auto;
     padding: 65px 10px 0;
@@ -954,7 +972,7 @@ header-area start
 /*------featured-area start------*/
 
 .featured-area {
-    padding: 100px 0px 70px;
+    padding: 20px 0px 40px;
 }
 
 .featured-wrap {
@@ -1190,13 +1208,13 @@ header-area start
 /*------product-area start------*/
 
 .product-area {
-  padding: 100px 0;
+  padding: 0px 0;
 
 }
 
 .section-title {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 .section-title h2 {
@@ -1213,6 +1231,9 @@ header-area start
 .product-img {
     position: relative;
     overflow: hidden;
+}
+.best_sell{
+    color: rgb(10, 10, 10) !important;
 }
 
 .product-img img {
@@ -1498,7 +1519,7 @@ header-area start
     box-shadow: none;
 }
 .product-area-2{
-    padding-bottom: 70px;
+    padding-bottom: 1px;
 }
  .contact-map {
   width: 100%;
