@@ -96,10 +96,10 @@
     
     <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-sign-turn-right-fill"></i><span>{{__('Transfer')}}</span></a>
-        <ul class="submenu">
+        {{-- <ul class="submenu">
             <li class="py-1"><a href="{{route(currentUser().'.transfer.index')}}">{{__('Transfer list')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.transfer.create')}}">{{__('Transfer')}}</a></li>
-		</ul>   
+		</ul>    --}}
     </li>
 
     <li class="sidebar-item has-sub">
@@ -107,10 +107,10 @@
         </a>
         <ul class="submenu">
             <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'> {{__('Supplier')}}</a>
-                <ul class="submenu">
+                {{-- <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.supplier.index')}}">{{__('List')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.supplier.create')}}">{{__('Add New')}}</a></li>
-                </ul>
+                </ul> --}}
             </li>
             
 		</ul>
@@ -123,17 +123,17 @@
         </a>
         <ul class="submenu">
             <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'> {{__('Customer')}}</a>
-                <ul class="submenu">
+                {{-- <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.customer.index')}}">{{__('List')}}</a></li>
                     <li class="py-1"><a href="{{route(currentUser().'.customer.create')}}">{{__('Add New')}}</a></li>
-                </ul>
+                </ul> --}}
             </li>
             
 		</ul>
         
     </li>
 
-    <li class="sidebar-item has-sub">
+    {{-- <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-calculator"></i><span>{{__('Accounts')}}</span>
         </a>
         <ul class="submenu">
@@ -153,16 +153,16 @@
             </li>
 		</ul>
         
-    </li>
+    </li> --}}
 
     <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-card-checklist"></i><span>{{__('Report')}}</span>
         </a>
-        <ul class="submenu">
+        {{-- <ul class="submenu">
             <li class="py-1"><a href="{{route(currentUser().'.preport')}}" >{{__('Purchase Report')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.sreport')}}" >{{__('Stock Report')}}</a></li>
             <li class="py-1"><a href="{{route(currentUser().'.salreport')}}" >{{__('Sales Report')}}</a></li>
 		</ul>
-        
+         --}}
     </li>
 </ul>
