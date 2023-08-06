@@ -54,21 +54,19 @@
                                     @endphp
                                     <ul class="dropdown_style">
                                         @forelse($category as $cat)
-                                        <li>
+                                        <li class="sub_list"><a href="javascript:void(0);">{{ $cat->category }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
                                             @if($cat->sub_category->count()>0)
-                                            <a href="#">{{ $cat->category }}</a>
                                             <ul class="sub_menu dropdown_style">
                                                 @foreach ($cat->sub_category as $subcat)
-                                                    <li class="sub_list">
-                                                        @if($subcat->child_category->count()>0)
-                                                        <a href="#">{{ $subcat->name }}</a>
-                                                        <ul class="sub_menu">
-                                                            @foreach ($subcat->child_category as $chcat)
-                                                            <li><a href="#">{{ $chcat->name }}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                        @endif
-                                                    </li>
+                                                <li class="sub_list"><a href="#">{{ $subcat->name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
+                                                    @if($subcat->child_category->count()>0)
+                                                    <ul class="sub_menu">
+                                                        @foreach ($subcat->child_category as $chcat)
+                                                        <li><a href="#">{{ $chcat->name }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                    @endif
+                                                </li>
                                                 @endforeach
                                             </ul>
                                             @endif
@@ -77,7 +75,7 @@
                                         @endforelse
                                     </ul>
                                 </li>
-                                <li><a href="#">About</a></li>
+                                {{-- <li><a href="#">About</a></li> --}}
                                 <li>
                                     <a href="javascript:void(0);">Shop <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown_style">
@@ -101,7 +99,7 @@
                                 <li>
                                     <a href="javascript:void(0);">Blog <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown_style">
-                                        <li class="sub_list"><a href="javascript:void(0);">blog Page &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
+                                        <li class="sub_list"><a href="javascript:void(0);">blog Page &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right"></i></a>
                                             <ul class="sub_menu dropdown_style">
                                                 <li class="sub_list"><a href="#">Blogsub1 Page</a>
                                                     <ul class="sub_menu">
