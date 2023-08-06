@@ -75,7 +75,7 @@
                                         @endforelse
                                     </ul>
                                 </li>
-                                {{-- <li><a href="#">About</a></li> --}}
+                                <li><a href="#">About</a></li>
                                 <li>
                                     <a href="javascript:void(0);">Shop <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown_style">
