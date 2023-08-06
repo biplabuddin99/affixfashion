@@ -49,18 +49,32 @@
                                 <li class=""><a href="{{ route('home') }}">Home</a></li>
                                 <li>
                                     <a href="javascript:void(0);">Categories <i class="fa fa-angle-down"></i></a>
+                                    @php
+                                    $category =\App\Models\Products\Category::all();
+                                    @endphp
                                     <ul class="dropdown_style">
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        {{-- @forelse(\App\Models\Category::orderBy('id')->select(['id', 'title', 'slug'])->get() as $data)
-                                        <option value="{{$data->id}}">{{$data->name}}</option>
-                                        <li><a href="about.html">{{$data->title}}</a></li>
+                                        @forelse($category as $cat)
+                                        <li>
+                                            @if($cat->sub_category->count()>0)
+                                            <a href="#">{{ $cat->category }}</a>
+                                            <ul class="sub_menu dropdown_style">
+                                                @foreach ($cat->sub_category as $subcat)
+                                                    <li class="sub_list">
+                                                        @if($subcat->child_category->count()>0)
+                                                        <a href="#">{{ $subcat->name }}</a>
+                                                        <ul class="sub_menu">
+                                                            @foreach ($subcat->child_category as $chcat)
+                                                            <li><a href="#">{{ $chcat->name }}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                        @endif
+                                                    </li>
+                                                @endforeach
+                                            </ul>
+                                            @endif
+                                        </li>
                                         @empty
-                                        @endforelse --}}
-                                        {{-- <li><a href="single-product.html">Product Details</a></li>
-                                        <li><a href="{{ route('cart.page') }}">Shopping cart</a></li>
-                                        <li><a href="checkout.html">Checkout</a></li>
-                                        <li><a href="wishlist.html">Wishlist</a></li>
-                                        <li><a href="faq.html">FAQ</a></li> --}}
+                                        @endforelse
                                     </ul>
                                 </li>
                                 <li><a href="#">About</a></li>

@@ -39,6 +39,9 @@ use App\Http\Controllers\Accounts\IncomeStatementController as statement;
 use App\Http\Controllers\Vouchers\CreditVoucherController as credit;
 use App\Http\Controllers\Vouchers\DebitVoucherController as debit;
 use App\Http\Controllers\Vouchers\JournalVoucherController as journal;
+
+/* Home web site */
+use App\Http\Controllers\Frontend\HomeController as home;
 /* Middleware */
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isOwner;
@@ -58,12 +61,11 @@ use App\Http\Middleware\isHr;
 |
 */
 /* frontend route */
-Route::get('home', function(){
-    return view('frontend.pages.home');
-})->name('home');
-Route::get('/', function(){
-    return view('frontend.pages.home');
-});
+Route::get('/home',[home::class,'home'])->name('home');
+Route::get('/',[home::class,'home'])->name('home');
+Route::get('/category/{category_id}',[home::class,'subCategory'])->name('category.list');
+Route::get('/category/{category_id}/{subcategory_id}',[home::class,'childCategory'])->name('category.subcategory.list');
+Route::get('/products/{category_id}/{subcategory_id?}/{childcategory_id?}',[home::class,'childCategoryProductList'])->name('category.product.list');
 
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');

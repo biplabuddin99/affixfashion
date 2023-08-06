@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Childcategory extends Model
 {
     use HasFactory;
-    public function subcategory(){
-        return $this->belongsTo(Subcategory::class);
+    public function sub_category(){
+        return $this->belongsTo(Subcategory::class,'subcategory_id','id');
     }
 }
