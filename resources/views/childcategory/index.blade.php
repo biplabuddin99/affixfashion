@@ -29,7 +29,7 @@
                                 @forelse($childcategories as $child)
                                 <tr>
                                 <th scope="row">{{ ++$loop->index }}</th>
-                                    <td>{{$child->subcategory?->name}}</td>
+                                    <td>{{$child->sub_category?->name}}</td>
                                     <td>{{$child->name}}</td>
                                     <td class="white-space-nowrap">
                                         <a href="{{route(currentUser().'.childcategory.edit',encryptor('encrypt',$child->id))}}">
