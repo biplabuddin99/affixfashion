@@ -35,14 +35,14 @@
                                         <a href="{{route(currentUser().'.childcategory.edit',encryptor('encrypt',$child->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <!-- <a href="javascript:void()" onclick="$('#form{{$child->id}}').submit()">
-                                            <i class="bi bi-trash"></i>
-                                        </a> -->
-                                        <!-- <form id="form{{$child->id}}" action="{{route(currentUser().'.childcategory.destroy',encryptor('encrypt',$child->id))}}" method="post">
+                                        <a href="javascript:void()" onclick="showConfirmation({{$child->id}})">
+                                            <i class="bi bi-trash" style='color:red'></i>
+                                        </a>
+                                        <form id="form{{$child->id}}" action="{{route(currentUser().'.childcategory.destroy',encryptor('encrypt',$child->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             
-                                        </form> -->
+                                        </form>
                                     </td>
                                 </tr>
                                 @empty
@@ -59,6 +59,13 @@
     </div>
 </section>
 <!-- Bordered table end -->
+<script>
+    function showConfirmation(subcatId) {
+        if (confirm("Are you sure you want to delete Permanent Child-Category?")) {
+            $('#form' + subcatId).submit();
+        }
+    }
+</script>
 
 
 @endsection

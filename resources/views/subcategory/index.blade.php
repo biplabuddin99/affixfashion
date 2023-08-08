@@ -36,7 +36,9 @@
                                         <a href="{{route(currentUser().'.subcategory.edit',encryptor('encrypt',$sub->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                       
+                                        <a href="javascript:void()" onclick="showConfirmation({{$sub->id}})">
+                                            <i class="bi bi-trash" style='color:red'></i>
+                                        </a>
                                         <form id="form{{$sub->id}}" action="{{route(currentUser().'.subcategory.destroy',encryptor('encrypt',$sub->id))}}" method="post">
                                             @csrf
                                             @method('delete')
@@ -58,6 +60,13 @@
     </div>
 </section>
 <!-- Bordered table end -->
+<script>
+    function showConfirmation(subcatId) {
+        if (confirm("Are you sure you want to delete Permanent SubCategory?")) {
+            $('#form' + subcatId).submit();
+        }
+    }
+</script>
 
 
 @endsection
