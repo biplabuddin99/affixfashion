@@ -2559,6 +2559,9 @@ shop single style here
     -webkit-transform: scale(1.15);
     -moz-transform: scale(1.15);
 }
+.border-success{
+    border-width:5px !important;
+}
 
 .featured-product-content {
     padding-top: 20px;

@@ -4,7 +4,7 @@
             <div class="row m-0 p-0">
                 <div class="col-12 m-0 p-0">
                     <div class="section-title m-0 p-0">
-                        <h5>Best Seller</h5>
+                        <h5><span class="bg-success text-white pl-4 pr-4">Best Seller</span></h5>
                         {{-- <img src="{{ asset('assets/frontend') }}/images/section-title.png" alt=""> --}}
                     </div>
                 </div>
