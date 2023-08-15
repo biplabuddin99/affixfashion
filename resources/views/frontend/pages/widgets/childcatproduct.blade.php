@@ -3,6 +3,21 @@
 Product
 @endsection
 @section('frontend_contend')
+<div class="row ml-5">
+    <!-- Breadcrumb start -->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active fw-bold"><a class="text-info" href="{{ route('category.list',[$cat->id]) }}">{{$cat->category}}</a></li>
+          @if($sub_cat)
+          <li class="breadcrumb-item active fw-bold"><a class="text-info" href="{{ route('category.subcategory.list',[$cat->id,$sub_cat->id]) }}">{{$sub_cat->name}}</a></li>
+          @endif
+          @if($child_cat)
+          <li class="breadcrumb-item active fw-bold" aria-current="page">{{$child_cat->name}}</li>
+          @endif
+        </ol>
+    </nav>
+<!-- Breadcrumb ends -->
+  </div>
     <!--best seller product-area start -->
     <div class="product-area product-area-2 mt-3">
         <div class="fluid-container">
