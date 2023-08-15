@@ -20,7 +20,7 @@
             <ul class="row">
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/1.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -47,7 +47,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/2.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -74,7 +74,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/3.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -101,7 +101,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -128,7 +128,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -155,7 +155,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img  rounded-circle border border-success">
+                        <div class="product-img  border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -192,7 +192,7 @@
             <ul class="row">
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/1.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -219,7 +219,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/2.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -246,7 +246,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/3.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -273,7 +273,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -300,7 +300,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -327,7 +327,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img  rounded-circle border border-success">
+                        <div class="product-img  border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -364,7 +364,7 @@
             <ul class="row">
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/1.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -391,7 +391,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/2.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -418,7 +418,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/3.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -445,7 +445,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -472,7 +472,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img rounded-circle border border-success">
+                        <div class="product-img border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
@@ -499,7 +499,7 @@
                 </li>
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
-                        <div class="product-img  rounded-circle border border-success">
+                        <div class="product-img  border border-success">
                             <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
