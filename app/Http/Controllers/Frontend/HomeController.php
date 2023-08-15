@@ -63,7 +63,7 @@ class HomeController extends Controller
     public function childCategoryProductList($category_id,$subcategory_id=false,$childcategory_id=false)
     {
         $child_cat=$sub_cat=false;
-        $product =Product::select('id','item_name','sales_price','item_image','is_feature');
+        $product =Product::select('id','product_name','price','image');
         if($childcategory_id){
             $product =$product->where('childcategory_id', $childcategory_id);
             $child_cat=ChildCategory::find($childcategory_id);
@@ -76,9 +76,9 @@ class HomeController extends Controller
         }
 
         $cat=Category::find($category_id);
-        $product =$product->paginate(12);
+        $product =$product->paginate(6);
 
         // return $product;
-        return view('product.childcatproduct',compact('product','cat','sub_cat','child_cat'));
+        return view('frontend.pages.widgets.childcatproduct',compact('product','cat','sub_cat','child_cat'));
     }
 }

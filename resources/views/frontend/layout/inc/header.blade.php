@@ -62,7 +62,7 @@
                                                     @if($subcat->child_category->count()>0)
                                                     <ul class="sub_menu">
                                                         @foreach ($subcat->child_category as $chcat)
-                                                        <li><a href="#">{{ $chcat->name }}</a></li>
+                                                        <li><a href="{{ route('category.product.list',[$cat->id,$subcat->id,$chcat->id]) }}">{{ $chcat->name }}</a></li>
                                                         @endforeach
                                                     </ul>
                                                     @endif
