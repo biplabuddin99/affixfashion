@@ -19,7 +19,7 @@
                                     <div class="form-group">
                                         <label for="name">{{__('Name')}}</label>
                                         <input type="text" id="name" class="form-control"
-                                            placeholder="Brand Name" value="{{ old('name')}}" name="name">
+                                            placeholder="Size Name" value="{{ old('name')}}" name="name">
                                     </div>
                                     @if($errors->has('name'))
                                     <span class="text-danger"> {{ $errors->first('name') }}</span>

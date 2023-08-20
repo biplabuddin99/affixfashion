@@ -72,6 +72,12 @@
                     <li class="py-1"><a href="{{route(currentUser().'.size.create')}}">{{__('Add New')}}</a></li>
                 </ul>
             </li>
+            <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Color')}}</a>
+                <ul class="submenu">
+                    <li class="py-1"><a href="{{route(currentUser().'.color.index')}}">{{__('List')}}</a></li>
+                    <li class="py-1"><a href="{{route(currentUser().'.color.create')}}">{{__('Add New')}}</a></li>
+                </ul>
+            </li>
             <li class="submenu-item sidebar-item has-sub"><a href="#" class='sidebar-link'>{{__('Products')}}</a>
                 <ul class="submenu">
                     <li class="py-1"><a href="{{route(currentUser().'.product.index')}}">{{__('List')}}</a></li>
