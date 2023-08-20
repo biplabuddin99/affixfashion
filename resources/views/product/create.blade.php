@@ -80,10 +80,10 @@
                                             <select class="choices form-select multiple-remove" multiple="multiple" name="show_frontend">
                                                 <optgroup label="Figures">
                                                     <option value="0" selected>Select</option>
-                                                    <option value="1">Men's</option>
-                                                    <option value="2">Wonen's</option>
-                                                    <option value="3">Kids</option>
-                                                    <option value="4">Best Seller</option>
+                                                    <option value="1">X</option>
+                                                    <option value="2">L</option>
+                                                    <option value="3">XXL</option>
+                                                    <option value="4">M</option>
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -94,10 +94,10 @@
                                             <select class="choices form-select multiple-remove" multiple="multiple" name="show_frontend">
                                                 <optgroup label="Figures">
                                                     <option value="0" selected>Select</option>
-                                                    <option value="1">Men's</option>
-                                                    <option value="2">Wonen's</option>
-                                                    <option value="3">Kids</option>
-                                                    <option value="4">Best Seller</option>
+                                                    <option value="1">Green</option>
+                                                    <option value="2">Blue</option>
+                                                    <option value="3">Red</option>
+                                                    <option value="4">White</option>
                                                 </optgroup>
                                             </select>
                                         </div>
