@@ -75,6 +75,34 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
+                                        <label for="show_frontend">{{__('Size')}}</label>
+                                        <div class="form-group">
+                                            <select class="choices form-select multiple-remove" multiple="multiple" name="show_frontend">
+                                                <optgroup label="Figures">
+                                                    <option value="0" selected>Select</option>
+                                                    <option value="1">Men's</option>
+                                                    <option value="2">Wonen's</option>
+                                                    <option value="3">Kids</option>
+                                                    <option value="4">Best Seller</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <label for="show_frontend">{{__('Color')}}</label>
+                                        <div class="form-group">
+                                            <select class="choices form-select multiple-remove" multiple="multiple" name="show_frontend">
+                                                <optgroup label="Figures">
+                                                    <option value="0" selected>Select</option>
+                                                    <option value="1">Men's</option>
+                                                    <option value="2">Wonen's</option>
+                                                    <option value="3">Kids</option>
+                                                    <option value="4">Best Seller</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="brand_id">{{__('Brand')}}</label>
                                             <select class="form-control" name="brand_id" id="brand_id">
@@ -119,6 +147,29 @@
                                                     <span class="text-danger"> {{ $errors->first('purchase_price') }}</span>
                                                 @endif
                                                 
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <label for="show_frontend">{{__('Show Frontend')}}</label>
+                                        <div class="form-group">
+                                            <select class="form-select" name="show_frontend">
+                                                <optgroup label="Figures">
+                                                    <option value="0">Select</option>
+                                                    <option value="1">Men's</option>
+                                                    <option value="2">Wonen's</option>
+                                                    <option value="3">Kids</option>
+                                                    <option value="4">Best Seller</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="show_hide">{{__('Show/Hide')}}</label>
+                                            <select class="form-control form-select" name="show_hide" id="show_hide">
+                                                <option value="1">Show</option>
+                                                <option value="2">Hide</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

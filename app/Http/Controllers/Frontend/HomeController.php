@@ -25,10 +25,10 @@ class HomeController extends Controller
         // ->select(['id', 'title','category_image','slug'])
         // ->get();
 
-        // $products = Product::where('is_active',1)
-        // ->latest('id')
-        // ->select('id','name','slug','product_price', 'product_stock', 'product_rating', 'product_image')
-        // ->paginate(12);
+        $products = Product::where('status',1)
+        ->latest('id')
+        ->select('id','category_id','product_name','price', 'image')
+        ->paginate(12);
 
         // $bestsell = Product::where('is_best_seller',1)
         // ->latest('id')
@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         // return $categories;
         // return $testimonials;
-        return view('frontend.pages.home');
+        return view('frontend.pages.home',compact('products'));
     }
 
     public function subCategory($category_id)
