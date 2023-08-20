@@ -22,6 +22,10 @@ return new class extends Migration
             $table->unsignedBigInteger('unit_id')->index();
             $table->string('product_name');
             $table->string('bar_code');
+            $table->string('size');
+            $table->string('color');
+            $table->string('show_frontend');
+            $table->string('show_hide');
             $table->string('description', 5000)->nullable();
             $table->decimal('price',10,2)->default(0);
             $table->decimal('purchase_price',10,2)->default(0);

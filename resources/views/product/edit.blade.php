@@ -72,6 +72,36 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">
+                                        <label for="show_frontend">{{__('Size')}}</label>
+                                        <div class="form-group">
+                                            <select class="choices form-select multiple-remove" multiple="multiple" name="size[]">
+                                                <optgroup label="Figures">
+                                                    <option value="0" selected>Select</option>
+                                                    @forelse ($sizes as $size) <!-- Use the $sizes variable from the controller -->
+                                                    <option value="{{ $size->id }}" @if(in_array($size->id, $size_edit)) selected @endif>{{ $size->name }}</option>
+                                                    @empty
+                                                    <option value="">No size Found</option>
+                                                    @endforelse
+                                                </optgroup>
+                                            </select>                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <label for="show_frontend">{{__('Color')}}</label>
+                                        <div class="form-group">
+                                            <select class="choices form-select multiple-remove" multiple="multiple" name="color[]">
+                                                <optgroup label="Figures">
+                                                    <option value="0" selected>Select</option>
+                                                    @forelse ($colors as $color) <!-- Use the $colors variable from the controller -->
+                                                    <option value="{{ $color->id }}" @if(in_array($color->id, $color_edit)) selected @endif>{{ $color->name }}</option>
+                                                    @empty
+                                                    <option value="">No color Found</option>
+                                                    @endforelse
+                                                </optgroup>
+                                            </select>  
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="brand_id">{{__('Brand')}}</label>
                                             <select class="form-control form-select" name="brand_id" id="brand_id">
@@ -108,6 +138,29 @@
                                             @if($errors->has('purchase_price'))
                                                 <span class="text-danger"> {{ $errors->first('purchase_price') }}</span>
                                             @endif                                            
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <label for="show_frontend">{{__('Show Frontend')}}</label>
+                                        <div class="form-group">
+                                            <select class="form-select" name="show_frontend">
+                                                <optgroup label="Figures">
+                                                    <option value="0">Select</option>
+                                                    <option value="1"{{ $product->show_frontend==1?'selected':'' }}>Men's</option>
+                                                    <option value="2"{{ $product->show_frontend==2?'selected':'' }}>Wonen's</option>
+                                                    <option value="3"{{ $product->show_frontend==3?'selected':'' }}>Kids</option>
+                                                    <option value="4"{{ $product->show_frontend==4?'selected':'' }}>Best Seller</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-12">
+                                        <div class="form-group">
+                                            <label for="show_hide">{{__('Show/Hide')}}</label>
+                                            <select class="form-control form-select" name="show_hide" id="show_hide">
+                                                <option value="1"{{ $product->show_hide==1?'selected':'' }}>Show</option>
+                                                <option value="2"{{ $product->show_hide==2?'selected':'' }}>Hide</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6 col-12">

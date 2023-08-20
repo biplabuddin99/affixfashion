@@ -10,6 +10,8 @@ use App\Models\Products\Category;
 use App\Models\Products\Subcategory;
 use App\Models\Products\Childcategory;
 use App\Models\Products\Brand;
+use \App\Models\Products\Size;
+use App\Models\Products\Color;
 use App\Models\Products\Unit;
 use Illuminate\Http\Request;
 use App\Http\Requests\Product\AddRequest;
@@ -60,7 +62,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(AddRequest $request)
-    { 
+    {
         try{
             $p= new Product;
             $p->bar_code=company()['company_id'].time();
@@ -69,6 +71,10 @@ class ProductController extends Controller
             $p->childcategory_id=$request->childcategory;
             $p->brand_id=$request->brand_id;
             $p->unit_id=$request->unit_id;
+            $p->size=$request->size?implode(',',$request->size):'';
+            $p->color=$request->color?implode(',',$request->color):'';
+            $p->show_frontend=$request->show_frontend;
+            $p->show_hide=$request->show_hide;
             $p->product_name=$request->productName;
             $p->description=$request->description;
             $p->price=$request->price;
@@ -117,17 +123,34 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
+    // public function edit($id)
+    // {
+    //     $categories = Category::where(company())->get();
+    //     $subcategories = Subcategory::where(company())->get();
+    //     $childcategories = Childcategory::where(company())->get();
+    //     $brands = Brand::where(company())->get();
+    //     $units = Unit::all();
+    //     $product= Product::findOrFail(encryptor('decrypt',$id));
+    //     $multi_photo = ProductImage::where('product_id',encryptor('decrypt',$id))->get();
+    //     $size_edit = explode(',', $product?->size);
+    //     return view('product.edit',compact('categories','subcategories','childcategories','brands','units','product','multi_photo','size_edit'));
+    // }
     public function edit($id)
     {
-        $categories = Category::where(company())->get();
-        $subcategories = Subcategory::where(company())->get();
-        $childcategories = Childcategory::where(company())->get();
-        $brands = Brand::where(company())->get();
+        $categories = Category::where('company_id', company())->get();
+        $subcategories = Subcategory::where('company_id', company())->get();
+        $childcategories = Childcategory::where('company_id', company())->get();
+        $brands = Brand::where('company_id', company())->get();
         $units = Unit::all();
         $product= Product::findOrFail(encryptor('decrypt',$id));
         $multi_photo = ProductImage::where('product_id',encryptor('decrypt',$id))->get();
-        return view('product.edit',compact('categories','subcategories','childcategories','brands','units','product','multi_photo'));
+        $size_edit = explode(',', $product->size); // Remove unnecessary '?'
+        $sizes =Size::where('company_id', company())->get();
+        $color_edit = explode(',', $product->color); // Remove unnecessary '?'
+        $colors =Color::where('company_id', company())->get();
+        return view('product.edit', compact('categories', 'subcategories', 'childcategories', 'brands', 'units', 'product', 'multi_photo', 'size_edit', 'sizes','color_edit','colors'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -144,6 +167,10 @@ class ProductController extends Controller
             $p->subcategory_id=$request->subcategory;
             $p->childcategory_id=$request->childcategory;
             $p->brand_id=$request->brand_id;
+            $p->size=$request->size?implode(',',$request->size):'';
+            $p->color=$request->color?implode(',',$request->color):'';
+            $p->show_frontend=$request->show_frontend;
+            $p->show_hide=$request->show_hide;
             $p->unit_id=$request->unit_id;
             $p->product_name=$request->productName;
             $p->description=$request->description;

@@ -77,13 +77,14 @@
                                     <div class="col-md-6 col-12">
                                         <label for="show_frontend">{{__('Size')}}</label>
                                         <div class="form-group">
-                                            <select class="choices form-select multiple-remove" multiple="multiple" name="show_frontend">
+                                            <select class="choices form-select multiple-remove" multiple="multiple" name="size[]">
                                                 <optgroup label="Figures">
                                                     <option value="0" selected>Select</option>
-                                                    <option value="1">X</option>
-                                                    <option value="2">L</option>
-                                                    <option value="3">XXL</option>
-                                                    <option value="4">M</option>
+                                                    @forelse (\App\Models\Products\Size::where(company())->get() as $size)
+                                                    <option value="{{ $size->id }}">{{ $size->name }}</option>                                                     
+                                                    @empty
+                                                    <option value="">No size Found</option>                                                       
+                                                    @endforelse
                                                 </optgroup>
                                             </select>
                                         </div>
@@ -91,13 +92,14 @@
                                     <div class="col-md-6 col-12">
                                         <label for="show_frontend">{{__('Color')}}</label>
                                         <div class="form-group">
-                                            <select class="choices form-select multiple-remove" multiple="multiple" name="show_frontend">
+                                            <select class="choices form-select multiple-remove" multiple="multiple" name="color[]">
                                                 <optgroup label="Figures">
                                                     <option value="0" selected>Select</option>
-                                                    <option value="1">Green</option>
-                                                    <option value="2">Blue</option>
-                                                    <option value="3">Red</option>
-                                                    <option value="4">White</option>
+                                                    @forelse (\App\Models\Products\Color::where(company())->get() as $color)
+                                                    <option value="{{ $color->id }}">{{ $color->name }}</option>                                                     
+                                                    @empty
+                                                    <option value="">No Color Found</option>                                                       
+                                                    @endforelse
                                                 </optgroup>
                                             </select>
                                         </div>
