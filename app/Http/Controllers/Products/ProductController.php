@@ -83,7 +83,7 @@ class ProductController extends Controller
             $p->company_id=company()['company_id'];
             $p->status=1;
             if($request->has('image'))
-                $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
+                $p->image=$this->resizeImage($request->image,'images/product/',true,200,200,false);
             if($p->save()){
                 if($request->has('product_multiple_image')){
                     foreach($request->product_multiple_image as $imgdata){
@@ -91,7 +91,7 @@ class ProductController extends Controller
                             $proPhoto=new ProductImage;
                             $proPhoto->product_id = $p->id;
                         
-                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/'.company()['company_id'],true,637,415,false);
+                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/',true,637,415,false);
                             $proPhoto->save();
                         }
                     }
@@ -178,11 +178,11 @@ class ProductController extends Controller
             $p->purchase_price=$request->purchase_price;
             if($request->has('image')){
                 if($p->image){
-                    if($this->deleteImage($p->image,'images/product/'.company()['company_id'])){
-                        $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
+                    if($this->deleteImage($p->image,'images/product/')){
+                        $p->image=$this->resizeImage($request->image,'images/product/',true,200,200,false);
                     }
                 }else{
-                    $p->image=$this->resizeImage($request->image,'images/product/'.company()['company_id'],true,200,200,false);
+                    $p->image=$this->resizeImage($request->image,'images/product/',true,200,200,false);
                 }
             }
             $p->company_id=company()['company_id'];
@@ -193,7 +193,7 @@ class ProductController extends Controller
                         if($imgdata){
                             $proPhoto=new ProductImage;
                             $proPhoto->product_id = $p->id;                      
-                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/'.company()['company_id'],true,637,415,false);
+                            $proPhoto->product_multiple_image=$this->resizeImage($imgdata,'images/product/',true,637,415,false);
                             $proPhoto->save();
                         }
                     }
@@ -372,9 +372,9 @@ class ProductController extends Controller
 
     public function multiple_img(Request $request){
         $images=ProductImage::findOrFail($request->id);
-        if($this->deleteImage($images->product_multiple_image,'images/product/'.company()['company_id']))
-    //     if (File::exists("'images/product/'.company()['company_id']".$images->product_multiple_image)) {
-    //        File::delete("'images/product/'.company()['company_id']".$images->product_multiple_image);
+        if($this->deleteImage($images->product_multiple_image,'images/product/'))
+    //     if (File::exists("'images/product/'".$images->product_multiple_image)) {
+    //        File::delete("'images/product/'".$images->product_multiple_image);
     //    }
 
        ProductImage::find($request->id)->delete();

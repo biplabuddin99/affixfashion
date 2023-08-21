@@ -41,7 +41,7 @@
                                     <td>{{$p->product_name}}</td>
                                     <td>{{$p->unit?->name}}</td>
                                     <td>{{$p->price}}</td>
-                                     <td><img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$p->image)}}" alt=""></td>
+                                     <td><img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.$p->image)}}" alt=""></td>
                                     <td>@if($p->status == 1) Active @else Inactive @endif</td>
                                     <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                     <td class="white-space-nowrap">
