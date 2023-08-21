@@ -166,7 +166,7 @@
                                     <div class="col-md-6 col-12">
                                         <div class="form-group">
                                             <label for="image">{{__('Image')}}</label>
-                                            <input type="file" class="form-control dropify" name="image" data-default-file="{{asset('images/product/'.company()['company_id'].'/'.$product->image)}}">
+                                            <input type="file" class="form-control dropify" name="image" data-default-file="{{asset('images/product/'.$product->image)}}">
                                             @error('image')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -193,7 +193,7 @@
                                     <div class="row imggl">
                                         @forelse($multi_photo as $mp)
                                         <div class="col-5 col-sm-3 mb-3 text-center del{{$mp->id}}">
-                                            <img class="modImg w-100" src="{{asset('images/product/'.company()['company_id'].'/'.$mp->product_multiple_image)}}" alt="" />
+                                            <img class="modImg w-100" src="{{asset('images/product/'.$mp->product_multiple_image)}}" alt="" />
                                             <button type="button" onclick="deletedata({{$mp->id}})" class="btn btn-danger btn-sm mt-2">Delete</button>
                                         </div>
                                         @empty
@@ -203,7 +203,7 @@
                                     </div>
                                     
                                     <div class="col-12 d-flex justify-content-end">
-                                    {{-- <img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.company()['company_id'].'/'.$product->image)}}" alt=""> --}}
+                                    {{-- <img width="80px" height="40px" class="float-first" src="{{asset('images/product/'.$product->image)}}" alt=""> --}}
                                         <button type="submit" class="btn btn-primary me-1 mb-1">{{__('Save')}}</button>
                                         
                                     </div>
