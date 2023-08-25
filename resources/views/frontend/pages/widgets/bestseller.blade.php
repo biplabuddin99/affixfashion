@@ -19,6 +19,7 @@
             </div>
             <ul class="row">
                 @forelse($products as $p)
+                @if ($p->show_frontend=='1')
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
                         <div class="product-img border border-success">
@@ -46,6 +47,7 @@
                         </div>
                     </div>
                 </li>
+                @endif
                 @empty
                 <h3 class="text-center m-5">No Product Found</h3>
                 @endforelse
@@ -59,10 +61,12 @@
                 </div>
             </div>
             <ul class="row">
+                @forelse($products as $p)
+                @if ($p->show_frontend=='2')
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
                         <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/1.jpg" alt="">
+                            <img src="{{asset('images/product/'.$p->image)}}" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
                                     <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
@@ -72,8 +76,8 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Nature Honey</a></h3>
-                            <p class="pull-left">$125
+                            <h3><a href="single-product.html"  class="text-dark">{{ $p->product_name }}</a></h3>
+                            <p class="pull-left">{{ $p->price .' '.'Dhm' }}
 
                             </p>
                             <ul class="pull-right d-flex">
@@ -86,141 +90,10 @@
                         </div>
                     </div>
                 </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/2.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Olive Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/3.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Olive Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Coconut Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Coconut Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img  border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Coconut Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+                @endif
+                @empty
+                <h3 class="text-center m-5">No Product Found</h3>
+                @endforelse
             </ul>
             <div class="row">
                 <div class="col-12">
@@ -231,10 +104,12 @@
                 </div>
             </div>
             <ul class="row">
+                @forelse($products as $p)
+                @if ($p->show_frontend=='3')
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
                         <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/1.jpg" alt="">
+                            <img src="{{asset('images/product/'.$p->image)}}" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
                                     <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
@@ -244,8 +119,8 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Nature Honey</a></h3>
-                            <p class="pull-left">$125
+                            <h3><a href="single-product.html"  class="text-dark">{{ $p->product_name }}</a></h3>
+                            <p class="pull-left">{{ $p->price .' '.'Dhm' }}
 
                             </p>
                             <ul class="pull-right d-flex">
@@ -258,141 +133,10 @@
                         </div>
                     </div>
                 </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/2.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Olive Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/3.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Olive Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Coconut Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Coconut Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
-                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
-                    <div class="product-wrap">
-                        <div class="product-img  border border-success">
-                            <img src="{{ asset('assets/frontend') }}/images/product/4.jpg" alt="">
-                            <div class="product-icon flex-style">
-                                <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
-                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
-                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">Coconut Oil</a></h3>
-                            <p class="pull-left">$125
-
-                            </p>
-                            <ul class="pull-right d-flex">
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star"></i></li>
-                                <li><i class="fa fa-star-half-o"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                </li>
+                @endif
+                @empty
+                <h3 class="text-center m-5">No Product Found</h3>
+                @endforelse
             </ul>
         </div>
     </div>

@@ -27,7 +27,7 @@ class HomeController extends Controller
 
         $products = Product::where('status',1)
         ->latest('id')
-        ->select('id','category_id','product_name','price', 'image')
+        ->select('id','category_id','product_name','price', 'image','show_frontend')
         ->paginate(6);
 
         // $bestsell = Product::where('is_best_seller',1)
