@@ -57,7 +57,7 @@
                             </button>
                             <div class="modal-body d-flex">
                                 <div class="product-single-img w-50">
-                                    <img src="{{ asset('assets/frontend') }}/images/product/product-details.jpg" alt="">
+                                    <img src="{{asset('images/product/'.$p->image)}}" alt="">
                                 </div>
                                 <div class="product-single-content w-50">
                                     <h3>{{ $p->product_name }}</h3>
@@ -73,13 +73,23 @@
                                         </ul>
                                     </div>
                                     <p class="pb-1 mb-0">On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire denounce with righteous indignation</p>
-                                    <p>Avabile Size:
+                                    {{-- <p class="pb-1 mb-0">Avabile Size:
                                         @foreach($sizes as $size)
                                         <input type="checkbox" id="size_{{ $size->id }}" name="sizes[]" value="{{ $size->id }}"
                                             @if(in_array($size->id, $size_edit)) checked @endif>
                                         <label class="font-weight-bold" for="size_{{ $size->id }}">{{ $size->name }}</label>
                                         @endforeach
                                     </p>
+                                    <p>Avabile Color:
+                                        @foreach($colors as $color)
+                                        <input type="checkbox" id="color_{{ $color->id }}" name="colors[]" value="{{ $color->id }}">
+                                        @if(in_array($color->id, $color_edit))
+                                            <label class="font-weight-bold" for="color_{{ $color->id }}">
+                                                {{ $color->name }}
+                                            </label>
+                                        @endif
+                                    @endforeach                                            
+                                    </p> --}}
                                     <ul class="input-style">
                                         <li class="quantity cart-plus-minus">
                                             <input type="text" value="1" />

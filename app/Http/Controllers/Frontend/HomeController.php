@@ -60,7 +60,7 @@ class HomeController extends Controller
         }
 
         $sizes = Size::all();
-        $colors = Color::where('company_id', company())->get();
+        $colors = Color::all();
 
         return view('frontend.pages.home', compact('products', 'sizes', 'colors', 'size_edit', 'color_edit'));
 
