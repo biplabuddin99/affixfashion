@@ -8,6 +8,8 @@ use App\Models\Products\Subcategory;
 use App\Models\Products\Category;
 use App\Models\Products\Childcategory;
 use App\Models\Products\Product;
+use \App\Models\Products\Size;
+use App\Models\Products\Color;
 
 class HomeController extends Controller
 {
@@ -25,10 +27,14 @@ class HomeController extends Controller
         // ->select(['id', 'title','category_image','slug'])
         // ->get();
 
-        $products = Product::where('status',1)
-        ->latest('id')
-        ->select('id','category_id','product_name','price', 'image','show_frontend')
-        ->paginate(6);
+        // $products = Product::where('status',1)
+        // ->latest('id')
+        // ->select('id','category_id','product_name','price', 'image','show_frontend','size','color')
+        // ->paginate(6);
+        // $size_edit = explode(',', $products->size); // Remove unnecessary '?'
+        // $sizes =Size::where('company_id', company())->get();
+        // $color_edit = explode(',', $products->color); // Remove unnecessary '?'
+        // $colors =Color::where('company_id', company())->get();
 
         // $bestsell = Product::where('is_best_seller',1)
         // ->latest('id')
@@ -38,7 +44,26 @@ class HomeController extends Controller
 
         // return $categories;
         // return $testimonials;
-        return view('frontend.pages.home',compact('products'));
+        // return view('frontend.pages.home',compact('products','sizes','size_edit'));
+
+            $products = Product::where('status', 1)
+        ->latest('id')
+        ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color')
+        ->paginate(6);
+
+        $size_edit = [];
+        $color_edit = [];
+
+        foreach ($products as $product) {
+            $size_edit[$product->id] = explode(',', $product->size); // Remove unnecessary '?'
+            $color_edit[$product->id] = explode(',', $product->color); // Remove unnecessary '?'
+        }
+
+        $sizes = Size::all();
+        $colors = Color::where('company_id', company())->get();
+
+        return view('frontend.pages.home', compact('products', 'sizes', 'colors', 'size_edit', 'color_edit'));
+
     }
 
     public function subCategory($category_id)

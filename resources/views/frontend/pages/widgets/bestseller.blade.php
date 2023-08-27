@@ -26,7 +26,8 @@
                             <img src="{{asset('images/product/'.$p->image)}}" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
+                                    <li><a data-toggle="modal" data-target="#exampleModalCenter{{ $p->id }}" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
+
                                     <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
                                 </ul>
@@ -47,6 +48,63 @@
                         </div>
                     </div>
                 </li>
+                <!-- Modal area start -->
+                <div class="modal fade" id="exampleModalCenter{{ $p->id }}" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <div class="modal-body d-flex">
+                                <div class="product-single-img w-50">
+                                    <img src="{{ asset('assets/frontend') }}/images/product/product-details.jpg" alt="">
+                                </div>
+                                <div class="product-single-content w-50">
+                                    <h3>{{ $p->product_name }}</h3>
+                                    <div class="rating-wrap fix">
+                                        <span class="pull-left">$219.56</span>
+                                        <ul class="rating pull-right">
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li><i class="fa fa-star"></i></li>
+                                            <li>(05 Customar Review)</li>
+                                        </ul>
+                                    </div>
+                                    <p class="pb-1 mb-0">On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire denounce with righteous indignation</p>
+                                    <p>Avabile Size:
+                                        @foreach($sizes as $size)
+                                        <input type="checkbox" id="size_{{ $size->id }}" name="sizes[]" value="{{ $size->id }}"
+                                            @if(in_array($size->id, $size_edit)) checked @endif>
+                                        <label class="font-weight-bold" for="size_{{ $size->id }}">{{ $size->name }}</label>
+                                        @endforeach
+                                    </p>
+                                    <ul class="input-style">
+                                        <li class="quantity cart-plus-minus">
+                                            <input type="text" value="1" />
+                                        </li>
+                                        <li><a href="cart.html">Add to Cart</a></li>
+                                    </ul>
+                                    <ul class="cetagory">
+                                        <li>Categories:</li>
+                                        <li><a href="#">Honey,</a></li>
+                                        <li><a href="#">Olive Oil</a></li>
+                                    </ul>
+                                    <ul class="socil-icon">
+                                        <li>Share :</li>
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal area start -->
                 @endif
                 @empty
                 <h3 class="text-center m-5">No Product Found</h3>
@@ -112,7 +170,7 @@
                             <img src="{{asset('images/product/'.$p->image)}}" alt="">
                             <div class="product-icon flex-style">
                                 <ul>
-                                    <li><a data-toggle="modal" data-target="#exampleModalCenter" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
+                                    <li><a data-toggle="modal" data-target="#exampleModalCenter{{ $p->id }}" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
                                     <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
                                     <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
                                 </ul>
