@@ -34,7 +34,7 @@
                             </div>
                         </div>
                         <div class="product-content">
-                            <h3><a href="single-product.html"  class="text-dark">{{ $p->product_name }}</a></h3>
+                            <h3><a href="{{ route('productdetail.page',['id'=>$p->id]) }}"  class="text-dark">{{ $p->product_name }}</a></h3>
                             <p class="pull-left">{{ $p->price .' '.'Dhm' }}
 
                             </p>
@@ -62,17 +62,17 @@
                                 <div class="product-single-content w-50">
                                     <h3>{{ $p->product_name }}</h3>
                                     <div class="rating-wrap fix">
-                                        <span class="pull-left">$219.56</span>
-                                        <ul class="rating pull-right">
+                                        <span class="pull-left">{{ $p->price }}Dhm</span>
+                                        {{-- <ul class="rating pull-right">
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                             <li><i class="fa fa-star"></i></li>
                                             <li>(05 Customar Review)</li>
-                                        </ul>
+                                        </ul> --}}
                                     </div>
-                                    <p class="pb-1 mb-0">On the other hand, we denounce with righteous indignation and dislike men who are so beguiled and demoralized by the charms of pleasure of the moment, so blinded by desire denounce with righteous indignation</p>
+                                    <p class="pb-1 mb-0">{{ $p->description }}</p>
                                     {{-- <p class="pb-1 mb-0">Avabile Size:
                                         @foreach($sizes as $size)
                                         <input type="checkbox" id="size_{{ $size->id }}" name="sizes[]" value="{{ $size->id }}"
@@ -98,8 +98,8 @@
                                     </ul>
                                     <ul class="cetagory">
                                         <li>Categories:</li>
-                                        <li><a href="#">Honey,</a></li>
-                                        <li><a href="#">Olive Oil</a></li>
+                                        <li><a class="text-dark" href="#">Honey,</a></li>
+                                        <li><a class="text-dark" href="#">Olive Oil</a></li>
                                     </ul>
                                     <ul class="socil-icon">
                                         <li>Share :</li>

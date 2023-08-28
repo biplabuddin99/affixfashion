@@ -68,6 +68,7 @@ Route::get('/',[home::class,'home'])->name('home');
 Route::get('/category/{category_id}',[home::class,'subCategory'])->name('category.list');
 Route::get('/category/{category_id}/{subcategory_id}',[home::class,'childCategory'])->name('category.subcategory.list');
 Route::get('/products/{category_id}/{subcategory_id?}/{childcategory_id?}',[home::class,'childCategoryProductList'])->name('category.product.list');
+Route::get('/single-product/{id}',[home::class,'productDetails'])->name('productdetail.page');
 
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');

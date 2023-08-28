@@ -48,7 +48,7 @@ class HomeController extends Controller
 
             $products = Product::where('status', 1)
         ->latest('id')
-        ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color')
+        ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
         ->paginate(6);
 
         $size_edit = [];
@@ -105,5 +105,17 @@ class HomeController extends Controller
 
         // return $product;
         return view('frontend.pages.widgets.childcatproduct',compact('product','cat','sub_cat','child_cat'));
+    }
+
+    public function productDetails($id)
+    {
+        $product=Product::findOrFail($id)
+        ->with('category','productImages')
+        ->first();
+
+        $releted_products=Product::whereNot('id',$id)->select('id','product_name','description','price','image')
+        ->limit(4)
+        ->get();
+        return view('frontend.pages.single-product',compact('product','releted_products'));
     }
 }
