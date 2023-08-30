@@ -24,3 +24,4 @@
     <script src="{{ asset('assets/frontend') }}/js/jquery-ui.min.js"></script>
     <!-- main js -->
     <script src="{{ asset('assets/frontend') }}/js/scripts.js"></script>
+    @stack('frontend_script')

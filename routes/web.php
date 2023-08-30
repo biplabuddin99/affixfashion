@@ -44,6 +44,7 @@ use App\Http\Controllers\Vouchers\JournalVoucherController as journal;
 
 /* Home web site */
 use App\Http\Controllers\Frontend\HomeController as home;
+use App\Http\Controllers\Frontend\CartController as cart;
 /* Middleware */
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isOwner;
@@ -69,6 +70,8 @@ Route::get('/category/{category_id}',[home::class,'subCategory'])->name('categor
 Route::get('/category/{category_id}/{subcategory_id}',[home::class,'childCategory'])->name('category.subcategory.list');
 Route::get('/products/{category_id}/{subcategory_id?}/{childcategory_id?}',[home::class,'childCategoryProductList'])->name('category.product.list');
 Route::get('/single-product/{id}',[home::class,'productDetails'])->name('productdetail.page');
+Route::get('/shopping-cart',[cart::class,'cartPage'])->name('cart.page');
+Route::post('/add-to-cart',[cart::class,'addToCart'])->name('add-to.cart');
 
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');

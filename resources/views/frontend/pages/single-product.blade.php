@@ -47,10 +47,13 @@ Single Product page
                         </div>
                         <p>{{ $product->description }}</p>
                         <ul class="input-style">
+                            <form action="">
                             <li class="quantity cart-plus-minus">
-                                <input type="text" value="1" />
+
+                                <input class="cartqty" type="text" value="1" />
                             </li>
                             <li><a href="cart.html">Add to Cart</a></li>
+                        </form>
                         </ul>
                         <ul class="cetagory">
                             <li>Categories:</li>

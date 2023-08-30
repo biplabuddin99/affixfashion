@@ -91,10 +91,23 @@
                                     @endforeach                                            
                                     </p> --}}
                                     <ul class="input-style">
-                                        <li class="quantity cart-plus-minus">
-                                            <input type="text" value="1" />
-                                        </li>
-                                        <li><a href="cart.html">Add to Cart</a></li>
+                                        {{-- <form action="">
+                                            <li class="quantity cart-plus-minus">
+                
+                                                <input class="cartqty" type="text" value="1" />
+                                            </li>
+                                            <li><a href="cart.html">Add to Cart</a></li>
+                                        </form> --}}
+                                        <form action="{{ route('add-to.cart') }}" method="post">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $p->id }}">
+                                            <li class="quantity cart-plus-minus">
+                                                <input type="text" value="1" name="order_qty" />
+                                            </li>
+                                            <li>
+                                                <button style="position: absolute; right: -170px; top: -25px; width: 170px; height: 42px;" type="submit" class="btn btn-danger">Add to Cart</button>
+                                            </li>
+                                        </form>
                                     </ul>
                                     <ul class="cetagory">
                                         <li>Categories:</li>
@@ -209,3 +222,8 @@
         </div>
     </div>
     <!--best seller product-area end -->
+    {{-- @push('frontend_script')
+    <script>
+     
+    </script>
+    @endpush --}}
