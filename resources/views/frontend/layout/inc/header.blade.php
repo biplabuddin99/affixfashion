@@ -156,8 +156,7 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="javascript:void(0);"><i class="flaticon-shop"></i> <span>1</span></a>
-                                {{-- <a href="javascript:void(0);"><i class="flaticon-shop"></i> <span>{{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}</span></a> --}}
+                                <a href="javascript:void(0);"><i class="flaticon-shop"></i> <span>{{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}</span></a>
                                 <ul class="cart-wrap dropdown_style">
                                     <li class="cart-items">
                                         <div class="cart-img">
