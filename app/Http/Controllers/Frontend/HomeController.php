@@ -109,8 +109,9 @@ class HomeController extends Controller
 
     public function productDetails($id)
     {
-        $product=Product::findOrFail($id)
-        ->with('category','productImages');
+        $product=Product::where('id',$id)
+        ->with('category','productImages')
+        ->first();
 
         $releted_products=Product::whereNot('id',$id)->select('id','product_name','description','price','image')
         ->limit(4)
