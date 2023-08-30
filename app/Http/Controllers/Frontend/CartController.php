@@ -36,7 +36,7 @@ class CartController extends Controller
             // 'product_stock'=>$product->product_stock,
             'qty'=>$order_qty,
             'options'=>[
-                'image'=>$product->image
+                'product_image'=>$product->product_image
             ]
         ]);
 

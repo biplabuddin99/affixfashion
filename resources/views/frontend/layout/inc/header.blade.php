@@ -165,12 +165,12 @@
                                     @foreach ($carts as $item)
                                     <li class="cart-items">
                                         <div class="cart-img">
-                                            <img src="{{ asset('images/product') }}/{{ $item->options->image }}" alt="" class="img-fluid rounded" style="width: 60px;">
+                                            <img src="{{ asset('images/product') }}/{{ $item->options->product_image }}" alt="" class="img-fluid rounded" style="width: 60px;">
                                         </div>
                                         <div class="cart-content">
                                             <a href="{{ route('cart.page') }}">{{ $item->name }}</a>
                                             <span>QTY : {{ $item->qty }}</span>
-                                            <p>${{ $item->qty * $item->price }}</p>
+                                            <p>{{ $item->qty * $item->price }} Dhm</p>
                                             <a href="{{ route('removefrom.cart',['cart_id'=>$item->rowId]) }}">
                                                 <i class="fa fa-times"></i>
                                             </a>
