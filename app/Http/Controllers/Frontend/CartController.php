@@ -27,6 +27,7 @@ class CartController extends Controller
         $order_qty=$request->order_qty;
 
         $product=Product::where('id',$product_id)->first();
+        // return $product;
 
         Cart::add([
             'id' =>$product->id,
@@ -36,7 +37,7 @@ class CartController extends Controller
             // 'product_stock'=>$product->product_stock,
             'qty'=>$order_qty,
             'options'=>[
-                'product_image'=>$product->product_image
+                'product_image'=>$product->image
             ]
         ]);
 
