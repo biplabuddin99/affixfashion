@@ -46,6 +46,12 @@ Single Product page
                             </ul>
                         </div>
                         <p>{{ $product->description }}</p>
+                        <p class="pb-1 mb-0">Avabile Size:
+                            @foreach($sizes as $size)
+                            <input type="checkbox" id="size_{{ $size->id }}" name="sizes[]" value="{{ $size->id }}">
+                            <label class="font-weight-bold mr-2" for="size_{{ $size->id }}">{{ $size->name }}</label>
+                            @endforeach
+                        </p>
                         <ul class="input-style">
                             <form action="">
                             <li class="quantity cart-plus-minus">

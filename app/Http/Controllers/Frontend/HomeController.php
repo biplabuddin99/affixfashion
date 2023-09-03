@@ -112,10 +112,11 @@ class HomeController extends Controller
         $product=Product::where('id',$id)
         ->with('category','productImages')
         ->first();
+        $sizes=Size::whereIn('id',explode(',',$product->size))->get();
 
         $releted_products=Product::whereNot('id',$id)->select('id','product_name','description','price','image')
         ->limit(4)
         ->get();
-        return view('frontend.pages.single-product',compact('product','releted_products'));
+        return view('frontend.pages.single-product',compact('product','releted_products','sizes'));
     }
 }

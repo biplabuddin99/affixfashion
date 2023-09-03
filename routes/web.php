@@ -45,6 +45,7 @@ use App\Http\Controllers\Vouchers\JournalVoucherController as journal;
 /* Home web site */
 use App\Http\Controllers\Frontend\HomeController as home;
 use App\Http\Controllers\Frontend\CartController as cart;
+use App\Http\Controllers\Frontend\CheckoutController as checkout;
 /* Middleware */
 use App\Http\Middleware\isAdmin;
 use App\Http\Middleware\isOwner;
@@ -73,6 +74,7 @@ Route::get('/single-product/{id}',[home::class,'productDetails'])->name('product
 Route::get('/shopping-cart',[cart::class,'cartPage'])->name('cart.page');
 Route::post('/add-to-cart',[cart::class,'addToCart'])->name('add-to.cart');
 Route::get('/remove-from-cart/{cart_id}',[cart::class,'removeFromCart'])->name('removefrom.cart');
+Route::get('checkout', [checkout::class, 'checkoutPage'])->name('customer.checkoutpage');
 
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');

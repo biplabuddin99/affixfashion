@@ -179,7 +179,7 @@
                                     @endforeach
                                     <li>Subtotol: <span class="pull-right">{{ $total_price }} Dhm</span></li>
                                     <li>
-                                        <button>Check Out</button>
+                                        <a href="{{ route('customer.checkoutpage') }}"><button>Check Out</button></a>
                                     </li>
                                 </ul>
                                 {{-- <a href="javascript:void(0);"><i class="flaticon-shop"></i> <span>{{ \Gloudemans\Shoppingcart\Facades\Cart::content()->count() }}</span></a>
