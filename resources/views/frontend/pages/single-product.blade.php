@@ -52,6 +52,12 @@ Single Product page
                             <label class="font-weight-bold mr-2" for="size_{{ $size->id }}">{{ $size->name }}</label>
                             @endforeach
                         </p>
+                        <p>Avabile Color:
+                            @foreach($colors as $color)
+                            <input type="checkbox" id="color_{{ $color->id }}" name="colors[]" value="{{ $color->id }}">
+                            <label class="font-weight-bold mr-2" for="color_{{ $color->id }}">{{ $color->name }}</label>
+                            @endforeach                                            
+                        </p>
                         <ul class="input-style">
                             <form action="">
                             <li class="quantity cart-plus-minus">

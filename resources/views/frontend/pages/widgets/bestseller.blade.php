@@ -73,23 +73,18 @@
                                         </ul> --}}
                                     </div>
                                     <p class="pb-1 mb-0">{{ $p->description }}</p>
-                                    {{-- <p class="pb-1 mb-0">Avabile Size:
+                                    <p class="pb-1 mb-0">Avabile Size:
                                         @foreach($sizes as $size)
-                                        <input type="checkbox" id="size_{{ $size->id }}" name="sizes[]" value="{{ $size->id }}"
-                                            @if(in_array($size->id, $size_edit)) checked @endif>
-                                        <label class="font-weight-bold" for="size_{{ $size->id }}">{{ $size->name }}</label>
+                                        <input type="checkbox" id="size_{{ $size->id }}" name="sizes[]" value="{{ $size->id }}">
+                                        <label class="font-weight-bold mr-2" for="size_{{ $size->id }}">{{ $size->name }}</label>
                                         @endforeach
                                     </p>
                                     <p>Avabile Color:
                                         @foreach($colors as $color)
                                         <input type="checkbox" id="color_{{ $color->id }}" name="colors[]" value="{{ $color->id }}">
-                                        @if(in_array($color->id, $color_edit))
-                                            <label class="font-weight-bold" for="color_{{ $color->id }}">
-                                                {{ $color->name }}
-                                            </label>
-                                        @endif
-                                    @endforeach                                            
-                                    </p> --}}
+                                        <label class="font-weight-bold mr-2" for="color_{{ $color->id }}">{{ $color->name }}</label>
+                                        @endforeach                                            
+                                    </p>
                                     <ul class="input-style">
                                         {{-- <form action="">
                                             <li class="quantity cart-plus-minus">

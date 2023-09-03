@@ -50,19 +50,12 @@ class HomeController extends Controller
         ->latest('id')
         ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
         ->paginate(6);
+        $productIds = $products->pluck('id'); // Get the IDs of the products in the paginator.
 
-        $size_edit = [];
-        $color_edit = [];
+        $sizes = Size::whereIn('id', $productIds)->get();
+        $colors = Color::whereIn('id', $productIds)->get();
 
-        foreach ($products as $product) {
-            $size_edit[$product->id] = explode(',', $product->size); // Remove unnecessary '?'
-            $color_edit[$product->id] = explode(',', $product->color); // Remove unnecessary '?'
-        }
-
-        $sizes = Size::all();
-        $colors = Color::all();
-
-        return view('frontend.pages.home', compact('products', 'sizes', 'colors', 'size_edit', 'color_edit'));
+        return view('frontend.pages.home', compact('products', 'sizes', 'colors'));
 
     }
 
@@ -113,10 +106,11 @@ class HomeController extends Controller
         ->with('category','productImages')
         ->first();
         $sizes=Size::whereIn('id',explode(',',$product->size))->get();
+        $colors=Color::whereIn('id',explode(',',$product->color))->get();
 
         $releted_products=Product::whereNot('id',$id)->select('id','product_name','description','price','image')
         ->limit(4)
         ->get();
-        return view('frontend.pages.single-product',compact('product','releted_products','sizes'));
+        return view('frontend.pages.single-product',compact('product','releted_products','sizes','colors'));
     }
 }
