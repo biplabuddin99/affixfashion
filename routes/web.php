@@ -29,6 +29,7 @@ use App\Http\Controllers\Settings\WarehouseController as warehouse;
 use App\Http\Controllers\Reports\ReportController as report;
 use App\Http\Controllers\Transfers\TransferController as transfer;
 use App\Http\Controllers\Currency\CurrencyController as currency;
+use App\Http\Controllers\Online_order\ShippingChargeController as shippingcharge;
 
 
 use App\Http\Controllers\Accounts\MasterAccountController as master;
@@ -130,6 +131,9 @@ Route::group(['middleware'=>isOwner::class],function(){
         //Supplier and Customer
         Route::resource('supplier',supplier::class,['as'=>'owner']);
         Route::resource('customer',customer::class,['as'=>'owner']);
+
+        //Online Order
+        Route::resource('shippingcharge',shippingcharge::class,['as'=>'owner']);
         
 
         //report
