@@ -74,12 +74,18 @@
                                     </div>
                                     <p class="pb-1 mb-0">{{ $p->description }}</p>
                                     <p class="pb-1 mb-0">Avabile Size:
+                                        @php
+                                            $sizes = \App\Models\Products\Size::whereIn('id',explode(',',$p->size))->get();
+                                        @endphp
                                         @foreach($sizes as $size)
                                         <input type="checkbox" id="size_{{ $size->id }}" name="sizes[]" value="{{ $size->id }}">
                                         <label class="font-weight-bold mr-2" for="size_{{ $size->id }}">{{ $size->name }}</label>
                                         @endforeach
                                     </p>
                                     <p>Avabile Color:
+                                        @php
+                                        $colors = \App\Models\Products\Color::whereIn('id',explode(',',$p->color))->get();
+                                        @endphp
                                         @foreach($colors as $color)
                                         <input type="checkbox" id="color_{{ $color->id }}" name="colors[]" value="{{ $color->id }}">
                                         <label class="font-weight-bold mr-2" for="color_{{ $color->id }}">{{ $color->name }}</label>

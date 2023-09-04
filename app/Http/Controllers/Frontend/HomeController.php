@@ -50,12 +50,8 @@ class HomeController extends Controller
         ->latest('id')
         ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
         ->paginate(6);
-        $productIds = $products->pluck('id'); // Get the IDs of the products in the paginator.
 
-        $sizes = Size::whereIn('id', $productIds)->get();
-        $colors = Color::whereIn('id', $productIds)->get();
-
-        return view('frontend.pages.home', compact('products', 'sizes', 'colors'));
+        return view('frontend.pages.home', compact('products'));
 
     }
 
