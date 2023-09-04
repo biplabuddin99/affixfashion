@@ -1,5 +1,5 @@
 @extends('layout.app')
-@section('pageTitle',trans('shippingcharge List'))
+@section('pageTitle',trans('Shipping Charge List'))
 @section('pageSubTitle',trans('List'))
 
 @section('content')

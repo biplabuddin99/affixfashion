@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('pageTitle',trans('Create shippingcharge'))
+@section('pageTitle',trans('Create Shipping Charge'))
 @section('pageSubTitle',trans('Create'))
 
 @section('content')
