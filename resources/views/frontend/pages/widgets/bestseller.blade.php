@@ -73,7 +73,7 @@
                                         </ul> --}}
                                     </div>
                                     <p class="pb-1 mb-0">{{ $p->description }}</p>
-                                    <p class="pb-1 mb-0">Avabile Size:
+                                    <p class="pb-1 mb-0"><b class="text-primary">Avabile Size:</b>
                                         @php
                                             $sizes = \App\Models\Products\Size::whereIn('id',explode(',',$p->size))->get();
                                         @endphp
@@ -82,7 +82,7 @@
                                         <label class="font-weight-bold mr-2" for="size_{{ $size->id }}">{{ $size->name }}</label>
                                         @endforeach
                                     </p>
-                                    <p>Avabile Color:
+                                    <p><b class="text-primary">Avabile Color:</b>
                                         @php
                                         $colors = \App\Models\Products\Color::whereIn('id',explode(',',$p->color))->get();
                                         @endphp
