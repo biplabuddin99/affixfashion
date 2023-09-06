@@ -95,7 +95,7 @@ class ShippingChargeController extends Controller
             $b= ShippingCharge::findOrFail(encryptor('decrypt',$id));
             $b->location=$request->name;
             $b->charge=$request->charge;
-            $b->company_id=company()['company_id'];
+            // $b->company_id=company()['company_id'];
             $b->status=1;
             if($b->save())
                 return redirect()->route(currentUser().'.shippingcharge.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));

@@ -17,10 +17,10 @@ return new class extends Migration
             $table->id();
             $table->string('location')->nullable();
             $table->decimal('charge',10,2)->default(0);
-            $table->unsignedBigInteger('company_id')->nullable()->index();
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->unsignedBigInteger('branch_id')->nullable()->index();
-            $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
+            // $table->unsignedBigInteger('company_id')->nullable()->index();
+            // $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            // $table->unsignedBigInteger('branch_id')->nullable()->index();
+            // $table->foreign('branch_id')->references('id')->on('branches')->onDelete('cascade');
             $table->string('status')->default(0);
             $table->timestamps();
         });
