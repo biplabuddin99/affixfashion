@@ -13,7 +13,7 @@ class CheckoutController extends Controller
     {
         $carts=Cart::content();
         $total_price=Cart::subtotal();
-        $districts=ShippingCharge::select('id','name','bn_name')->get();
-        return view('frontend.pages.checkout',compact('carts','total_price','districts'));
+        $shipping=ShippingCharge::select('id','location','charge')->get();
+        return view('frontend.pages.checkout',compact('carts','total_price','shipping'));
     }
 }
