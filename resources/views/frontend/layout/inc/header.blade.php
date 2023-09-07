@@ -1,5 +1,5 @@
     <!-- header-area start -->
-    <header class="header-area">
+    <header class="header-area" style="position: sticky; top:0px; z-index:100;">
         <div class="header-top bg-2">
             <div class="fluid-container">
                 <div class="row">

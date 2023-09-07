@@ -1,5 +1,5 @@
     <!-- latest product-area start -->
-    <div class="product-area">
+    <div class="product-area"  style="position: relative;">
         <div class="fluid-container">
             <div class="row">
                 <div class="col-12">

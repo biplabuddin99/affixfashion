@@ -97,7 +97,7 @@ body {
     -webkit-transition: all 0.3s linear;
     -o-transition: all 0.3s linear;
     transition: all 0.3s linear;
-    position: absolute;
+    position:absolute ;
     top: -10px;
     right: 10px;
     z-index: 0;

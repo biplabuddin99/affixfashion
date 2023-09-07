@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Location</label>
-                                    <select name="district_id" class="form-select @error('district_id') is-invalid @enderror">
+                                    <select name="district_id" class="form-control form-select @error('district_id') is-invalid @enderror">
                                         <option value="">Select a district</option>
                                         {{-- @foreach ($districts as $district)
                                         <option value="{{ $district->id }}">{{ $district->name }}</option>
