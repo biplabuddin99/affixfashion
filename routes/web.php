@@ -76,6 +76,8 @@ Route::get('/shopping-cart',[cart::class,'cartPage'])->name('cart.page');
 Route::post('/add-to-cart',[cart::class,'addToCart'])->name('add-to.cart');
 Route::get('/remove-from-cart/{cart_id}',[cart::class,'removeFromCart'])->name('removefrom.cart');
 Route::get('checkout', [checkout::class, 'checkoutPage'])->name('customer.checkoutpage');
+Route::post('placeorder', [checkout::class, 'placeOrder'])->name('customer.placeorder');
+Route::get('/shipping/ajax/{shipping_id}', [checkout::class, 'ShippingAjax'])->name('loadupazila.ajax');
 
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');

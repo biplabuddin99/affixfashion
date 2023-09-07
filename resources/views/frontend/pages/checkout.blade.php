@@ -4,7 +4,8 @@
  <!-- checkout-area start -->
     <div class="checkout-area ptb-100">
         <div class="container">
-            <form action="#" method='post'>
+            <form action="{{ route('customer.placeorder') }}" method='post'>
+                @csrf
                 <div class="row">
                     <div class="col-lg-8">
                         @csrf
@@ -41,11 +42,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">Location</label>
-                                    <select name="district_id" class="form-control form-select @error('district_id') is-invalid @enderror">
+                                    <select name="shipping_id" id="shipping_id" class="form-control form-select @error('shipping_id') is-invalid @enderror">
                                         <option value="">Select a district</option>
-                                        {{-- @foreach ($districts as $district)
-                                        <option value="{{ $district->id }}">{{ $district->name }}</option>
-                                        @endforeach --}}
+                                        @foreach ($shipping as $ship)
+                                        <option value="{{ $ship->id }}">{{ $ship->location }}</option>
+                                        @endforeach
                                     </select>
                                     @if($errors->has('shipping_address'))
                                     <small class="d-block text-danger">
@@ -92,27 +93,27 @@
                                 <tbody class="shippingdata">
 
                                     @if (Session::has('coupon'))
-                                    <tr>
-                                        <td>Subtotal</td>
-                                        <td> {{ $total_price }} BDT</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Discount</td>
-                                        <td> (-) {{ Session::get('coupon')['discount'] }} Dhm</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total</td>
-                                        <td> {{ Session::get('coupon')['balance'] }} Dhm<del class="text-danger"> ৳{{ Session::get('coupon')['cart_total'] }} Dhm</del></td>
-                                    </tr>
+                                        <tr>
+                                            <td>Subtotal</td>
+                                            <td> {{ $total_price }} BDT</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Discount</td>
+                                            <td> (-) {{ Session::get('coupon')['discount'] }} Dhm</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td> {{ Session::get('coupon')['balance'] }} Dhm<del class="text-danger"> ৳{{ Session::get('coupon')['cart_total'] }} Dhm</del></td>
+                                        </tr>
                                     @else
-                                    <tr>
-                                        <td>Subtotal</td>
-                                        <td> {{ $total_price }} BDT</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Total</td>
-                                        <td> {{ $total_price }} BDT</td>
-                                    </tr>
+                                        <tr>
+                                            <td>Subtotal</td>
+                                            <td> {{ $total_price }} BDT</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Total</td>
+                                            <td> {{ $total_price }} BDT</td>
+                                        </tr>
                                     @endif
                                     <tr>
                                         <td>
@@ -147,4 +148,28 @@
         </div>
     </div>
     <!-- checkout-area end -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        // District wise shipping Charge
+        $(document).ready(function() {
+            $('#shipping_id').on('change', function() {
+                var shipping_id = $(this).val();
+                console.log();
+                if (shipping_id) {
+                    $.ajax({
+                        url: "{{ url('/shipping/ajax') }}/" + shipping_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                           console.log(data);
+                            var shippingCharge = data;
+                            //console.log(shippingCharge);
+                            $('.shippingdata').html(shippingCharge);
+                        },
+                    });
+                }
+            });
+        });
+    </script>
 @endsection
