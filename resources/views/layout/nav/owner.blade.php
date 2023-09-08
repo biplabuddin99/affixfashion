@@ -92,9 +92,8 @@
         <a href="#" class='sidebar-link'><i class="bi bi-box-fill"></i><span>{{__('Online Order')}}</span>
         </a>
         <ul class="submenu">
-            <li class="submenu-item sidebar-item has-sub"><a href="{{route(currentUser().'.shippingcharge.index')}}"> {{__('Shipping Charge')}}</a></li>
-		</ul>
-        
+            <li class="py-1"><a href="{{route(currentUser().'.shippingcharge.index')}}"> {{__('Shipping Charge')}}</a></li>
+		</ul>        
     </li>
 
     <li class="sidebar-item has-sub">
