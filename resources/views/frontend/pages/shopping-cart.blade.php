@@ -1,9 +1,9 @@
-@extends('frontend.layouts.master')
+@extends('frontend.layout.master')
 @section('frontendtitle')
 Cart page
 @endsection
 
-@section('frontend_content')
+@section('frontend_contend')
 <!-- cart-area start -->
     <div class="cart-area ptb-100">
         <div class="container">
@@ -78,7 +78,7 @@ Cart page
                                         <li><span class="pull-left">Subtotal </span>$380.00</li>
                                         <li><span class="pull-left"> Total </span> $380.00</li>
                                     </ul>
-                                    <a href="checkout.html">Proceed to Checkout</a>
+                                    <a href="{{ route('customer.checkoutpage') }}">Proceed to Checkout</a>
                                 </div>
                             </div>
                         </div>
