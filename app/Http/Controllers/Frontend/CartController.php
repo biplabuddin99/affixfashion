@@ -17,7 +17,11 @@ class CartController extends Controller
         $carts=Cart::content();
         $total_price=Cart::subtotal();
         // return $carts;
-        return view('frontend.pages.shopping-cart',compact('carts','total_price'));
+        if($total_price>0){
+            return view('frontend.pages.shopping-cart',compact('carts','total_price'));
+        }else{
+            return view('frontend.pages.empty_cart');
+        }
     }
 
     public function addToCart(Request $request)
