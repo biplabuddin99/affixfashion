@@ -25,7 +25,7 @@ Cart page
                                 @forelse ($carts as $cartitem)
                                 <tr>
                                     <td>
-                                      <img class="img-fluid" src="{{ asset('images/product') }}/{{ $cartitem->options->product_image }}" alt=""/>
+                                      <img style="max-width: 50% !important" class="img-fluid" src="{{ asset('images/product') }}/{{ $cartitem->options->product_image }}" alt=""/>
                                     </td>
                                     <td>{{ $cartitem->name }}</td>
                                     <td>{{ $cartitem->price }} TK</td>
