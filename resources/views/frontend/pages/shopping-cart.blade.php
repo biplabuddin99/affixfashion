@@ -22,36 +22,26 @@ Cart page
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse ($carts as $cartitem)
                                 <tr>
-                                    <td class="images"><img src="assets/images/cart/1.jpg" alt=""></td>
-                                    <td class="product"><a href="single-product.html">Neture Honey</a></td>
-                                    <td class="ptice">$139.00</td>
-                                    <td class="quantity cart-plus-minus">
-                                        <input type="text" value="1" />
+                                    <td>
+                                      <img class="img-fluid" src="{{ asset('images/product') }}/{{ $cartitem->options->product_image }}" alt=""/>
                                     </td>
-                                    <td class="total">$139.00</td>
-                                    <td class="remove"><i class="fa fa-times"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="images"><img src="assets/images/cart/2.jpg" alt=""></td>
-                                    <td class="product"><a href="single-product.html">Pure Olive Oil</a></td>
-                                    <td class="ptice">$684.47</td>
-                                    <td class="quantity cart-plus-minus">
-                                        <input type="text" value="1" />
+                                    <td>{{ $cartitem->name }}</td>
+                                    <td>{{ $cartitem->price }} TK</td>
+                                    <td>
+                                        <strong class="ps-2">{{ $cartitem->qty }}</strong>
                                     </td>
-                                    <td class="total">$684.47</td>
-                                    <td class="remove"><i class="fa fa-times"></i></td>
-                                </tr>
-                                <tr>
-                                    <td class="images"><img src="assets/images/cart/3.jpg" alt=""></td>
-                                    <td class="product"><a href="single-product.html">Pure Coconut Oil</a></td>
-                                    <td class="ptice">$145.80</td>
-                                    <td class="quantity cart-plus-minus">
-                                        <input type="text" value="1" />
+                                    <td>{{ $cartitem->price*$cartitem->qty  }} TK</td>
+                                    <td>
+                                        <a href="{{ route('removefrom.cart',['cart_id' => $cartitem->rowId]) }}">
+                                            {{-- <i class="ms-3 text-danger bi bi-x-circle-fill"></i> --}}
+                                            <i class="fa fa-times text-danger"></i>
+                                        </a>
                                     </td>
-                                    <td class="total">$145.80</td>
-                                    <td class="remove"><i class="fa fa-times"></i></td>
-                                </tr>
+                                  </tr>
+                                @empty           
+                                @endforelse
                             </tbody>
                         </table>
                         <div class="row mt-60">
