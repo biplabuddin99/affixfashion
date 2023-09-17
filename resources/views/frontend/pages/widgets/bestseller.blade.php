@@ -10,16 +10,16 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-12">
+                <div class="col-6 pull-left">
                     <div class="m-0 p-0">
                         <h4><span class="border border-success pl-5 pr-5">Men</span></h4>
                         {{-- <img src="{{ asset('assets/frontend') }}/images/section-title.png" alt=""> --}}
                     </div>
                 </div>
+                <div class="col-6 pull-right text-right"><a class="text-success" href="">Men All</a></div>
             </div>
             <ul class="row">
                 @forelse($products as $p)
-                @if ($p->show_frontend=='1')
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
                         <div class="product-img border border-success">
@@ -129,22 +129,21 @@
                     </div>
                 </div>
                 <!-- Modal area start -->
-                @endif
                 @empty
                 <h3 class="text-center m-5">No Product Found</h3>
                 @endforelse
             </ul>
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div class="m-0 p-0">
                         <h4><span class="border border-success pl-5 pr-5">Women</span></h4>
                         {{-- <img src="{{ asset('assets/frontend') }}/images/section-title.png" alt=""> --}}
                     </div>
                 </div>
+                <div class="col-6 pull-right text-right"><a class="text-success" href="">Women All</a></div>
             </div>
             <ul class="row">
-                @forelse($products as $p)
-                @if ($p->show_frontend=='2')
+                @forelse($womens as $p)
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
                         <div class="product-img border border-success">
@@ -172,22 +171,21 @@
                         </div>
                     </div>
                 </li>
-                @endif
                 @empty
                 <h3 class="text-center m-5">No Product Found</h3>
                 @endforelse
             </ul>
             <div class="row">
-                <div class="col-12">
+                <div class="col-6">
                     <div class="m-0 p-0">
                         <h4><span class="border border-success pl-5 pr-5">Kids</span></h4>
                         {{-- <img src="{{ asset('assets/frontend') }}/images/section-title.png" alt=""> --}}
                     </div>
                 </div>
+                <div class="col-6 pull-right text-right"><a class="text-success" href="">Kids All</a></div>
             </div>
             <ul class="row">
-                @forelse($products as $p)
-                @if ($p->show_frontend=='3')
+                @forelse($kids as $p)
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
                         <div class="product-img border border-success">
@@ -215,7 +213,48 @@
                         </div>
                     </div>
                 </li>
-                @endif
+                @empty
+                <h3 class="text-center m-5">No Product Found</h3>
+                @endforelse
+            </ul>
+            <div class="row">
+                <div class="col-6">
+                    <div class="m-0 p-0">
+                        <h4><span class="border border-success pl-5 pr-5">Accessories</span></h4>
+                        {{-- <img src="{{ asset('assets/frontend') }}/images/section-title.png" alt=""> --}}
+                    </div>
+                </div>
+                <div class="col-6 pull-right text-right"><a class="text-success" href="">Accessories All</a></div>
+            </div>
+            <ul class="row">
+                @forelse($kids as $p)
+                <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
+                    <div class="product-wrap">
+                        <div class="product-img border border-success">
+                            <img src="{{asset('images/product/'.$p->image)}}" alt="">
+                            <div class="product-icon flex-style">
+                                <ul>
+                                    <li><a data-toggle="modal" data-target="#exampleModalCenter{{ $p->id }}" href="javascript:void(0);"><i class="fa fa-eye"></i></a></li>
+                                    <li><a href="wishlist.html"><i class="fa fa-heart"></i></a></li>
+                                    <li><a href="cart.html"><i class="fa fa-shopping-bag"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h3><a href="single-product.html"  class="text-dark">{{ $p->product_name }}</a></h3>
+                            <p class="pull-left">{{ $p->price .' '.'Dhm' }}
+
+                            </p>
+                            <ul class="pull-right d-flex">
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star"></i></li>
+                                <li><i class="fa fa-star-half-o"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                </li>
                 @empty
                 <h3 class="text-center m-5">No Product Found</h3>
                 @endforelse

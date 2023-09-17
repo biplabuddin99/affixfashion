@@ -50,8 +50,16 @@ class HomeController extends Controller
         ->latest('id')
         ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
         ->paginate(6);
+            $kids = Product::where('show_frontend', 3)
+        ->latest('id')
+        ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
+        ->paginate(6);
+            $womens = Product::where('show_frontend', 2)
+        ->latest('id')
+        ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
+        ->paginate(6);
 
-        return view('frontend.pages.home', compact('products'));
+        return view('frontend.pages.home', compact('products','kids','womens'));
 
     }
 
