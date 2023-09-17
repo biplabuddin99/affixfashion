@@ -160,7 +160,8 @@
                                                     <option value="1">Men's</option>
                                                     <option value="2">Wonen's</option>
                                                     <option value="3">Kids</option>
-                                                    <option value="4">Best Seller</option>
+                                                    <option value="4">Accessories</option>
+                                                    <option value="5">Best Seller</option>
                                                 </optgroup>
                                             </select>
                                         </div>

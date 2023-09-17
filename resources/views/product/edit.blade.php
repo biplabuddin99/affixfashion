@@ -149,7 +149,8 @@
                                                     <option value="1"{{ $product->show_frontend==1?'selected':'' }}>Men's</option>
                                                     <option value="2"{{ $product->show_frontend==2?'selected':'' }}>Wonen's</option>
                                                     <option value="3"{{ $product->show_frontend==3?'selected':'' }}>Kids</option>
-                                                    <option value="4"{{ $product->show_frontend==4?'selected':'' }}>Best Seller</option>
+                                                    <option value="4"{{ $product->show_frontend==4?'selected':'' }}>Accessories</option>
+                                                    <option value="5"{{ $product->show_frontend==5?'selected':'' }}>Best Seller</option>
                                                 </optgroup>
                                             </select>
                                         </div>

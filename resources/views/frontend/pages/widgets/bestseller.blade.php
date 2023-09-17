@@ -227,7 +227,7 @@
                 <div class="col-6 pull-right text-right"><a class="text-success" href="">Accessories All</a></div>
             </div>
             <ul class="row">
-                @forelse($kids as $p)
+                @forelse($accessories as $p)
                 <li class="col-xl-2 col-lg-3 col-sm-4 col-6">
                     <div class="product-wrap">
                         <div class="product-img border border-success">

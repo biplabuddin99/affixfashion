@@ -58,8 +58,12 @@ class HomeController extends Controller
         ->latest('id')
         ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
         ->paginate(6);
+            $accessories = Product::where('show_frontend', 4)
+        ->latest('id')
+        ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
+        ->paginate(6);
 
-        return view('frontend.pages.home', compact('products','kids','womens'));
+        return view('frontend.pages.home', compact('products','kids','womens','accessories'));
 
     }
 
