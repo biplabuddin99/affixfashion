@@ -46,7 +46,7 @@ class HomeController extends Controller
         // return $testimonials;
         // return view('frontend.pages.home',compact('products','sizes','size_edit'));
 
-            $products = Product::where('status', 1)
+            $products = Product::where('show_frontend', 1)
         ->latest('id')
         ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
         ->paginate(6);
