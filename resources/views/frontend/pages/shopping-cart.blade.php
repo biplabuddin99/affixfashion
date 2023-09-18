@@ -47,12 +47,12 @@ Cart page
                         <div class="row mt-60">
                             <div class="col-xl-4 col-lg-5 col-md-6 ">
                                 <div class="cartcupon-wrap">
-                                    <ul class="d-flex">
+                                    {{-- <ul class="d-flex">
                                         <li>
                                             <button>Update Cart</button>
                                         </li>
                                         <li><a href="shop.html">Continue Shopping</a></li>
-                                    </ul>
+                                    </ul> --}}
                                     <h3>Cupon</h3>
                                     <p>Enter Your Cupon Code if You Have One</p>
                                     <div class="cupon-wrap">
