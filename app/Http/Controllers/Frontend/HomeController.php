@@ -62,8 +62,12 @@ class HomeController extends Controller
         ->latest('id')
         ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
         ->paginate(6);
+            $bestsell = Product::where('show_frontend', 5)
+        ->latest('id')
+        ->select('id', 'category_id', 'product_name', 'price', 'image', 'show_frontend', 'size', 'color','description')
+        ->paginate(6);
 
-        return view('frontend.pages.home', compact('products','kids','womens','accessories'));
+        return view('frontend.pages.home', compact('products','kids','womens','accessories','bestsell'));
 
     }
 
@@ -120,5 +124,11 @@ class HomeController extends Controller
         ->limit(4)
         ->get();
         return view('frontend.pages.single-product',compact('product','releted_products','sizes','colors'));
+    }
+
+    public function offerProduct()
+    {
+        $offerproduct = Product::where('show_frontend', 5)->where(company())->paginate(12);
+        return view('frontend.pages.widgets.offerproduct',compact('offerproduct'));
     }
 }

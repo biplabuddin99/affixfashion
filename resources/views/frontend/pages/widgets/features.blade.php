@@ -12,15 +12,20 @@
             <div class="row">
                 <div class="col-12">
                     <div class="featured-active2 owl-carousel next-prev-style mb-0 p-0 mt-4">
+                        @forelse ($bestsell as $bsell)
                         <div class="featured-wrap">
                             <div class="featured-img">
-                                <img src="{{ asset('assets/frontend') }}/images/featured/6.jpg" alt="">
+                                <img style="height: 200px; width: 255px;" src="{{asset('images/product/'.$bsell->image)}}" alt="">
                                 <div class="featured-content">
-                                    <a href="shop.html">Pure Honey</a>
+                                    <a href="{{ route('offerproduct.page') }}">Shop</a>
                                 </div>
                             </div>
+                            <p  class="text-center"><b><a class="text-dark" href="{{ route('productdetail.page',['id'=>$bsell->id]) }}">{{ $bsell->product_name }}</a></b></p>
                         </div>
-                        <div class="featured-wrap">
+                        @empty
+                        <h3 class="text-center m-5">No Product Found</h3>
+                        @endforelse
+                        {{-- <div class="featured-wrap">
                             <div class="featured-img">
                                 <img src="{{ asset('assets/frontend') }}/images/featured/7.jpg" alt="">
                                 <div class="featured-content">
@@ -51,7 +56,7 @@
                                     <a href="shop.html">Olive Oil</a>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

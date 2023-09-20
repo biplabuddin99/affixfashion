@@ -72,6 +72,7 @@ Route::get('/category/{category_id}',[home::class,'subCategory'])->name('categor
 Route::get('/category/{category_id}/{subcategory_id}',[home::class,'childCategory'])->name('category.subcategory.list');
 Route::get('/products/{category_id}/{subcategory_id?}/{childcategory_id?}',[home::class,'childCategoryProductList'])->name('category.product.list');
 Route::get('/single-product/{id}',[home::class,'productDetails'])->name('productdetail.page');
+Route::get('/offer-product-list',[home::class,'offerProduct'])->name('offerproduct.page');
 Route::get('/shopping-cart',[cart::class,'cartPage'])->name('cart.page');
 Route::post('/add-to-cart',[cart::class,'addToCart'])->name('add-to.cart');
 Route::get('/remove-from-cart/{cart_id}',[cart::class,'removeFromCart'])->name('removefrom.cart');
