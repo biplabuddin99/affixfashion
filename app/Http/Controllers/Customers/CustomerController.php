@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\Customer\AddNewRequest;
 use App\Http\Requests\Customer\UpdateRequest;
 use App\Http\Requests\Customer\frontAddRequest;
+use App\Http\Requests\Customer\frontLoginCheckRequest;
 use App\Http\Traits\ResponseTrait;
 use Illuminate\Support\Facades\Crypt;
 use Exception;
@@ -150,5 +151,44 @@ class CustomerController extends Controller
 
     public function frontSinInForm(){
         return view('customer.front-login');
+    }
+
+    public function frontCustomerLoginCheck(frontLoginCheckRequest $request)
+    {
+        try {
+            $customer = Customer::where('mobile', $request->mobile)->first();
+            if ($customer) {
+                if ($request->password === Crypt::decryptString($customer->password)) {
+                    $this->setSession($customer);
+                    return redirect()->route('customer.dashboard')->with($this->resMessageHtml(true, null, 'Successfully login'));
+                } else
+                    return redirect()->route('login')->with($this->resMessageHtml(false, 'error', 'wrong cradential! Please try Again'));
+            } else {
+                return redirect()->route('login')->with($this->resMessageHtml(false, 'error', 'wrong cradential!. Or no user found!'));
+            }
+        } catch (Exception $error) {
+            // dd($error);
+            // Toastr::info('Please try Again!');
+            return redirect()->route('login')->with($this->resMessageHtml(false, 'error', 'wrong cradential!'));
+        }
+    }
+
+    public function setSession($customer){
+        return request()->session()->put(
+                [
+                    'userId'=>$customer->id,
+                    'userName'=>$customer->customer_name,
+                    'userEmail'=>$customer->email,
+                    'shippingAddress'=>$customer->address,
+                    'Phone'=>$customer->mobile,
+                    'language'=>$customer->language,
+                    'Image'=>$customer->image?$customer->image:'no-image.png'
+                ]
+            );
+    }
+
+    public function singOut(){
+        request()->session()->flush();
+        return redirect('login')->with($this->resMessageHtml(false,'error','successfully Logout'));
     }
 }

@@ -19,7 +19,7 @@
                             <input type="Password">
                             <button type="submit">Register</button>
                             <div class="text-center">
-                                <button><a href="login.html">Or Login</a></button>
+                                <button><a href="{{ route('front.login') }}">Or Login</a></button>
                             </div>
                         </div>
                     </div>

@@ -84,6 +84,7 @@ Route::get('/shipping/ajax/{shipping_id}', [checkout::class, 'ShippingAjax'])->n
 Route::get('/customer-register',[customer::class,'frontSingUpForm'])->name('front.register');
 Route::post('customer-register',[customer::class,'frontsignUpStore'])->name('front.customerStore');
 Route::get('/customer-login',[customer::class,'frontSinInForm'])->name('front.login');
+Route::post('/customer-login-check',[customer::class,'frontCustomerLoginCheck'])->name('frontlogin.check');
 
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');
