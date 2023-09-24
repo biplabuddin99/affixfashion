@@ -7,12 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Settings\Location\Country;
 use App\Models\Settings\Location\Division;
 use App\Models\Settings\Location\District;
-use App\Models\Customers\customer;
+use App\Models\Customers\Customer;
 use App\Models\Settings\Branch;
 use Illuminate\Http\Request;
 use App\Http\Requests\Customer\AddNewRequest;
 use App\Http\Requests\Customer\UpdateRequest;
+use App\Http\Requests\Customer\frontAddRequest;
 use App\Http\Traits\ResponseTrait;
+use Illuminate\Support\Facades\Crypt;
 use Exception;
 
 class CustomerController extends Controller
@@ -22,9 +24,9 @@ class CustomerController extends Controller
     public function index()
     {
         if( currentUser()=='owner')
-            $customers = customer::where(company())->paginate(10);
+            $customers = Customer::where(company())->paginate(10);
         else
-            $customers = customer::where(company())->where(branch())->paginate(10);
+            $customers = Customer::where(company())->where(branch())->paginate(10);
 
         return view('customer.index',compact('customers'));
     }
@@ -41,7 +43,7 @@ class CustomerController extends Controller
     public function store(AddNewRequest $request)
     {
         try{
-            $cus= new customer;
+            $cus= new Customer;
             $cus->customer_name= $request->customerName;
             $cus->contact= $request->contact;
             $cus->email= $request->email;
@@ -79,14 +81,14 @@ class CustomerController extends Controller
         $divisions = Division::all();
         $districts = District::all();
         $branches = Branch::where(company())->get();
-        $customer = customer::findOrFail(encryptor('decrypt',$id));
+        $customer = Customer::findOrFail(encryptor('decrypt',$id));
         return view('customer.edit',compact('countries','divisions','districts','customer','branches'));
     }
 
     public function update(UpdateRequest $request,$id)
     {
         try{
-            $sup= customer::findOrFail(encryptor('decrypt',$id));
+            $sup= Customer::findOrFail(encryptor('decrypt',$id));
             $sup->customer_name= $request->customerName;
             $sup->contact= $request->contact;
             $sup->email= $request->email;
@@ -113,7 +115,7 @@ class CustomerController extends Controller
 
     public function destroy($id)
     {
-        $cat= customer::findOrFail(encryptor('decrypt',$id));
+        $cat= Customer::findOrFail(encryptor('decrypt',$id));
         $cat->delete();
         return redirect()->back();
     }
@@ -122,5 +124,31 @@ class CustomerController extends Controller
     {
         return view('customer.front-register');
     }
-    
+
+        public function frontsignUpStore(frontAddRequest $request)
+    {
+        // dd($request->all());
+        try {
+            $customer = new Customer;
+            $customer->customer_name=$request->customer_name;
+            $customer->phone=$request->phone;
+            // $customer->address=$request->address;
+            // $customer->email=$request->email;
+            $customer->image='avater.jpg';
+            $customer->password=Crypt::encryptString($request->password);
+            if($customer->save()){
+            return redirect(route('front.login'));
+            }else{
+            return redirect()->back()->with('please try again');
+            }
+
+        }catch(Exception $e){
+            // Toastr::primary('Please try Again!');
+            dd($e);
+        }
+    }
+
+    public function frontSinInForm(){
+        return view('customer.front-login');
+    }
 }
