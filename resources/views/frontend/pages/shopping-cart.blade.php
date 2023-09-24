@@ -28,11 +28,11 @@ Cart page
                                       <img style="max-width: 50% !important" class="img-fluid" src="{{ asset('images/product') }}/{{ $cartitem->options->product_image }}" alt=""/>
                                     </td>
                                     <td>{{ $cartitem->name }}</td>
-                                    <td>{{ $cartitem->price }} TK</td>
+                                    <td>{{ $cartitem->price }} Dhm</td>
                                     <td>
                                         <strong class="ps-2">{{ $cartitem->qty }}</strong>
                                     </td>
-                                    <td>{{ $cartitem->price*$cartitem->qty  }} TK</td>
+                                    <td>{{ $cartitem->price*$cartitem->qty  }} Dhm</td>
                                     <td>
                                         <a href="{{ route('removefrom.cart',['cart_id' => $cartitem->rowId]) }}">
                                             {{-- <i class="ms-3 text-danger bi bi-x-circle-fill"></i> --}}
@@ -65,8 +65,8 @@ Cart page
                                 <div class="cart-total text-right">
                                     <h3>Cart Totals</h3>
                                     <ul>
-                                        <li><span class="pull-left">Subtotal </span>$380.00</li>
-                                        <li><span class="pull-left"> Total </span> $380.00</li>
+                                        <li><span class="pull-left">Subtotal </span>380.00 Dhm</li>
+                                        <li><span class="pull-left"> Total </span> 380.00 Dhm</li>
                                     </ul>
                                     <a href="{{ route('customer.checkoutpage') }}">Proceed to Checkout</a>
                                 </div>

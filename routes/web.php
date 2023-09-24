@@ -80,6 +80,9 @@ Route::get('checkout', [checkout::class, 'checkoutPage'])->name('customer.checko
 Route::post('placeorder', [checkout::class, 'placeOrder'])->name('customer.placeorder');
 Route::get('/shipping/ajax/{shipping_id}', [checkout::class, 'ShippingAjax'])->name('loadupazila.ajax');
 
+/* front customer */
+Route::get('/customer-register',[customer::class,'frontSingUpForm'])->name('front.register');
+
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');
 Route::post('/register', [auth::class,'signUpStore'])->name('register.store');

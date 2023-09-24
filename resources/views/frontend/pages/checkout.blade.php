@@ -95,7 +95,7 @@
                                     @if (Session::has('coupon'))
                                         <tr>
                                             <td>Subtotal</td>
-                                            <td> {{ $total_price }} BDT</td>
+                                            <td> {{ $total_price }} Dhm</td>
                                         </tr>
                                         <tr>
                                             <td>Discount</td>
@@ -108,11 +108,11 @@
                                     @else
                                         <tr>
                                             <td>Subtotal</td>
-                                            <td> {{ $total_price }} BDT</td>
+                                            <td> {{ $total_price }} Dhm</td>
                                         </tr>
                                         <tr>
                                             <td>Total</td>
-                                            <td> {{ $total_price }} BDT</td>
+                                            <td> {{ $total_price }} Dhm</td>
                                         </tr>
                                     @endif
                                     <tr>

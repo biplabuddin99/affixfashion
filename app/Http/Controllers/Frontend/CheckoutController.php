@@ -33,15 +33,15 @@ class CheckoutController extends Controller
             $return="
             <tr>
                 <td>Subtotal</td>
-                <td> ".Cart::subtotal()." BDT</td>
+                <td> ".Cart::subtotal()." Dhm</td>
             </tr>
             <tr>
                 <td>Discount</td>
-                <td> (-) ". Session::get('coupon')['discount'] ." BDT</td>
+                <td> (-) ". Session::get('coupon')['discount'] ." Dhm</td>
             </tr>
             <tr>
                 <td>Shipping</td>
-                <td id='shipping_charge'>"."(+) ".$shippingcharge." BDT</td>
+                <td id='shipping_charge'>"."(+) ".$shippingcharge." Dhm</td>
             </tr>
             <tr>
                 <td>Total</td>
@@ -56,15 +56,15 @@ class CheckoutController extends Controller
         }else{
             $return="<tr>
                         <td>Subtotal</td>
-                        <td> ".Cart::subtotal()." BDT</td>
+                        <td> ".Cart::subtotal()." Dhm</td>
                     </tr>
                     <tr>
                         <td>Shipping</td>
-                        <td id='shipping_charge'>"."(+) ".$shippingcharge." BDT</td>
+                        <td id='shipping_charge'>"."(+) ".$shippingcharge." Dhm</td>
                     </tr>
                     <tr>
                         <td>Total</td>
-                        <td> ".(str_replace(",", "", Cart::subtotal())+$shippingcharge)." BDT</td>
+                        <td> ".(str_replace(",", "", Cart::subtotal())+$shippingcharge)." Dhm</td>
                     </tr>
                     <tr>
                     <td>

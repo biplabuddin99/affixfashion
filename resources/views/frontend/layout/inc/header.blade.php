@@ -33,7 +33,7 @@
                             @endauth
                             @guest
                             <li><a class="btn btn-warning" href="#">Login</a></li>
-                            <li><a class="btn btn-primary" href="#"> Signup </a></li>
+                            <li><a class="btn btn-primary" href="{{ route('front.register') }}"> Signup </a></li>
                             @endguest
                         </ul>
                     </div>

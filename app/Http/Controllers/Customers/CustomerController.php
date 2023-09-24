@@ -18,11 +18,7 @@ use Exception;
 class CustomerController extends Controller
 {
     use ResponseTrait;
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         if( currentUser()=='owner')
@@ -33,11 +29,6 @@ class CustomerController extends Controller
         return view('customer.index',compact('customers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $countries = Country::all();
@@ -47,12 +38,6 @@ class CustomerController extends Controller
         return view('customer.create',compact('countries','divisions','districts','branches'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(AddNewRequest $request)
     {
         try{
@@ -83,23 +68,11 @@ class CustomerController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customers\customer  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function show(customer $customer)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customers\customer  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $countries = Country::all();
@@ -110,13 +83,6 @@ class CustomerController extends Controller
         return view('customer.edit',compact('countries','divisions','districts','customer','branches'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customers\customer  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function update(UpdateRequest $request,$id)
     {
         try{
@@ -145,16 +111,16 @@ class CustomerController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Customers\customer  $customer
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $cat= customer::findOrFail(encryptor('decrypt',$id));
         $cat->delete();
         return redirect()->back();
     }
+
+    public function frontSingUpForm()
+    {
+        return view('customer.front-register');
+    }
+    
 }
