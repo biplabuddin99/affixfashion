@@ -7,6 +7,9 @@
             <form action="{{route('frontlogin.check')}}" method="post">
                 @csrf
                 <div class="row">
+                    @if(Session::has('response'))
+                    {!!Session::get('response')['message']!!}
+                    @endif
                     <div class="col-lg-6 offset-lg-3 col-md-8 offset-md-2 col-12">
                         <div class="account-form form-style">
                             <p>Phone Number</p>

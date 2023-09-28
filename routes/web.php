@@ -75,7 +75,7 @@ Route::get('/products/{category_id}/{subcategory_id?}/{childcategory_id?}',[home
 Route::get('/single-product/{id}',[home::class,'productDetails'])->name('productdetail.page');
 Route::get('/offer-product-list',[home::class,'offerProduct'])->name('offerproduct.page');
 Route::get('/shopping-cart',[cart::class,'cartPage'])->name('cart.page');
-Route::post('/add-to-cart',[cart::class,'addToCart'])->name('add-to.cart');
+
 Route::get('/remove-from-cart/{cart_id}',[cart::class,'removeFromCart'])->name('removefrom.cart');
 Route::get('checkout', [checkout::class, 'checkoutPage'])->name('customer.checkoutpage');
 Route::post('placeorder', [checkout::class, 'placeOrder'])->name('customer.placeorder');
@@ -242,6 +242,7 @@ Route::group(['middleware'=>isHr::class],function(){
 Route::group(['middleware'=>isfontCustomer::class],function(){
     Route::prefix('frontcustomer')->group(function(){
         Route::get('/customer-dashboard', [dash::class,'frontCustomer'])->name('frontcustomer.dashboard');
+        Route::post('/add-to-cart',[cart::class,'addToCart'])->name('add-to.cart');
         
     });
 });
