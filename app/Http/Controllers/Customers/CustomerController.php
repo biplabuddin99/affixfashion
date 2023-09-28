@@ -176,19 +176,19 @@ class CustomerController extends Controller
     public function setSession($customer){
         return request()->session()->put(
                 [
-                    'userId'=>$customer->id,
-                    'userName'=>$customer->customer_name,
-                    'userEmail'=>$customer->email,
-                    'shippingAddress'=>$customer->address,
-                    'Phone'=>$customer->mobile,
-                    'language'=>$customer->language,
-                    'Image'=>$customer->image?$customer->image:'no-image.png'
+                    'fontuserId'=>$customer->id,
+                    'fontuserName'=>$customer->customer_name,
+                    'fontuserEmail'=>$customer->email,
+                    'fontshippingAddress'=>$customer->address,
+                    'fontPhone'=>$customer->mobile,
+                    'fontlanguage'=>$customer->language,
+                    'fontImage'=>$customer->image?$customer->image:'no-image.png'
                 ]
             );
     }
 
-    public function singOut(){
+    public function frontsingOut(){
         request()->session()->flush();
-        return redirect('login')->with($this->resMessageHtml(false,'error','successfully Logout'));
+        return redirect('front.login')->with($this->resMessageHtml(false,'error','successfully Logout'));
     }
 }

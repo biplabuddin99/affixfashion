@@ -45,4 +45,10 @@ class DashboardController extends Controller
     public function hrDashboard(){
         return view('dasbhoard.hr');
     }
+    /*
+    * frontCustomer dashboard
+    */
+    public function frontCustomer(){
+        return view('dasbhoard.hr');
+    }
 }

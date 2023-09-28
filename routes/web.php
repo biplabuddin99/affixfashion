@@ -54,6 +54,7 @@ use App\Http\Middleware\isSalesmanager;
 use App\Http\Middleware\isSalesman;
 use App\Http\Middleware\isAccounts;
 use App\Http\Middleware\isHr;
+use App\Http\Middleware\isfontCustomer;
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +86,7 @@ Route::get('/customer-register',[customer::class,'frontSingUpForm'])->name('fron
 Route::post('customer-register',[customer::class,'frontsignUpStore'])->name('front.customerStore');
 Route::get('/customer-login',[customer::class,'frontSinInForm'])->name('front.login');
 Route::post('/customer-login-check',[customer::class,'frontCustomerLoginCheck'])->name('frontlogin.check');
+Route::get('/customer-logout',[customer::class,'frontsingOut'])->name('frontlogOut');
 
 /* backend route */
 Route::get('/register', [auth::class,'signUpForm'])->name('register');
@@ -234,6 +236,12 @@ Route::group(['middleware'=>isAccounts::class],function(){
 Route::group(['middleware'=>isHr::class],function(){
     Route::prefix('hr')->group(function(){
         Route::get('/dashboard', [dash::class,'hrDashboard'])->name('hr.dashboard');
+        
+    });
+});
+Route::group(['middleware'=>isfontCustomer::class],function(){
+    Route::prefix('frontcustomer')->group(function(){
+        Route::get('/customer-dashboard', [dash::class,'frontCustomer'])->name('frontcustomer.dashboard');
         
     });
 });
