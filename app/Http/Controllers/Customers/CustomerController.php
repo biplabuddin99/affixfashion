@@ -186,9 +186,8 @@ class CustomerController extends Controller
                 ]
             );
     }
-
     public function frontsingOut(){
         request()->session()->flush();
-        return redirect(route('front.login'))->with($this->resMessageHtml(false,'error','successfully Logout'));
+        return redirect(route('front.login'))->with($this->resMessageHtml(false,'error','please login again'));
     }
 }
