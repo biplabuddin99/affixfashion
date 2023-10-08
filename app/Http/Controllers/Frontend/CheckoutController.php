@@ -28,7 +28,6 @@ class CheckoutController extends Controller
         else
             $shippingcharge=0;
 
-
         if (Session::has('coupon')){
             $return="
             <tr>
