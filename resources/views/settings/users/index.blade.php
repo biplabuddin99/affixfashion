@@ -13,7 +13,7 @@
                     {!!Session::get('response')['message']!!}
                 @endif
                 <div>
-                    <a class=" float-end" href="{{route(currentUser().'.users.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                    <a class=" float-end" href="{{route('users.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                 </div>
                 <!-- table bordered -->
                 <div class="table-responsive">
@@ -42,13 +42,13 @@
                                 <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                 <td>{{$p->role?->type}}</td>
                                 <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.users.edit',encryptor('encrypt',$p->id))}}">
+                                    <a href="{{route('users.edit',encryptor('encrypt',$p->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                     {{--<a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
-                                    <form id="form{{$p->id}}" action="{{route(currentUser().'.users.destroy',encryptor('encrypt',$p->id))}}" method="post">
+                                    <form id="form{{$p->id}}" action="{{route('users.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>--}}

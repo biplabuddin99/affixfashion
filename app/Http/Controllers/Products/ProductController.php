@@ -96,7 +96,7 @@ class ProductController extends Controller
                         }
                     }
                 }
-                return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             } else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             }
@@ -198,7 +198,7 @@ class ProductController extends Controller
                         }
                     }
                 }
-                return redirect()->route(currentUser().'.product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('product.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             } else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             }

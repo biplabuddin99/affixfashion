@@ -14,7 +14,7 @@
                         <!-- table bordered -->
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0">
-                            <a class="float-end" href="{{route(currentUser().'.branch.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                            <a class="float-end" href="{{route('branch.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                                 <thead>
                                     <tr>
                                         <th scope="col">{{__('#SL')}}</th>
@@ -39,13 +39,13 @@
                                         <td>{{$cat->Currency?->currency_name}}</td>
                                         
                                         <td class="white-space-nowrap">
-                                            <a href="{{route(currentUser().'.branch.edit',encryptor('encrypt',$cat->id))}}">
+                                            <a href="{{route('branch.edit',encryptor('encrypt',$cat->id))}}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                             <!-- <a href="javascript:void()" onclick="$('#form{{$cat->id}}').submit()">
                                                 <i class="bi bi-trash"></i>
                                             </a> -->
-                                            <form id="form{{$cat->id}}" action="{{route(currentUser().'.branch.destroy',encryptor('encrypt',$cat->id))}}" method="post">
+                                            <form id="form{{$cat->id}}" action="{{route('branch.destroy',encryptor('encrypt',$cat->id))}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 

@@ -67,7 +67,7 @@ class UserController extends Controller
             if($request->has('image'))
                 $user->image=$this->resizeImage($request->image,'images/users/'.company()['company_id'],true,200,200,false);
             if($user->save())
-                return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully Registred'));
+                return redirect()->route('users.index')->with($this->resMessageHtml(true,null,'Successfully Registred'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             
@@ -138,9 +138,9 @@ class UserController extends Controller
                         [
                             'image'=>$user->image?$user->image:$user->image,
                         ]);
-                    return redirect()->route(currentUser().'.profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                    return redirect()->route('profile.update')->with($this->resMessageHtml(true,null,'Successfully updated'));
                 }else{
-                    return redirect()->route(currentUser().'.users.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                    return redirect()->route('users.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
                 }
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));

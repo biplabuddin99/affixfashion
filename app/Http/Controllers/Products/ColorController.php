@@ -48,7 +48,7 @@ class ColorController extends Controller
             $b->company_id=company()['company_id'];
             if($b->save()){
                Toastr::success('successfully color Create done!');
-                return redirect()->route(currentUser().'.color.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('color.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             }else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             }
@@ -94,7 +94,7 @@ class ColorController extends Controller
             $b= Color::findOrFail(encryptor('decrypt',$id));
             $b->name=$request->name;
             if($b->save())
-                return redirect()->route(currentUser().'.color.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
+                return redirect()->route('color.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

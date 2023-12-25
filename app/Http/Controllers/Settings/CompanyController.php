@@ -116,7 +116,7 @@ class CompanyController extends Controller
 
 
             if($com->save())
-                return redirect()->route(currentUser().'.company.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
+                return redirect()->route('company.index')->with($this->resMessageHtml(true,null,'Successfully updated'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

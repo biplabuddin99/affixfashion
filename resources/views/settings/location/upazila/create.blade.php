@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.upazila.store')}}">
+                            <form class="form" method="post" action="{{route('upazila.store')}}">
                                 @csrf
                                 <div class="row">
                                     

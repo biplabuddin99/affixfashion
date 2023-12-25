@@ -19,7 +19,7 @@
                 @if(Session::has('response'))
                     {!!Session::get('response')['message']!!}
                 @endif
-                <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.users.update',encryptor('encrypt',$users->id))}}">
+                <form class="form" method="post" enctype="multipart/form-data" action="{{route('users.update',encryptor('encrypt',$users->id))}}">
                     @csrf
                     @method('PATCH')
                     <input type="hidden" value="{{$users->role_id}}" name="role_id">

@@ -66,7 +66,7 @@ class BranchController extends Controller
             
             
             if($cat->save())
-                return redirect()->route(currentUser().'.branch.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('branch.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
@@ -124,7 +124,7 @@ class BranchController extends Controller
 
                 
             if($cat->save())
-                return redirect()->route(currentUser().'.branch.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('branch.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

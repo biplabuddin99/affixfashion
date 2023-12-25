@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.district.store')}}">
+                            <form class="form" method="post" action="{{route('district.store')}}">
                                 @csrf
                                 <div class="row">
                                     

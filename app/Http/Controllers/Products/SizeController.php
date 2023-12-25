@@ -48,7 +48,7 @@ class SizeController extends Controller
             $b->company_id=company()['company_id'];
             if($b->save()){
                Toastr::success('successfully Size Create done!');
-                return redirect()->route(currentUser().'.size.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('size.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             }else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             }
@@ -94,7 +94,7 @@ class SizeController extends Controller
             $b= Size::findOrFail(encryptor('decrypt',$id));
             $b->name=$request->name;
             if($b->save())
-                return redirect()->route(currentUser().'.size.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('size.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

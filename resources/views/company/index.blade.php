@@ -41,7 +41,7 @@
                                         <td>{{$data->Currency?->currency_name}}</td>
                                         <td>{{$data->address}}</td>
                                         <td class="white-space-nowrap">
-                                            <a href="{{route(currentUser().'.company.edit',encryptor('encrypt',$data->id))}}">
+                                            <a href="{{route('company.edit',encryptor('encrypt',$data->id))}}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                         </td>

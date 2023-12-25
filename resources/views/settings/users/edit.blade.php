@@ -14,7 +14,7 @@
                             @if(Session::has('response'))
                                 {!!Session::get('response')['message']!!}
                             @endif
-                            <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.users.update',encryptor('encrypt',$user->id))}}">
+                            <form class="form" method="post" enctype="multipart/form-data" action="{{route('users.update',encryptor('encrypt',$user->id))}}">
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$user->id)}}">
@@ -25,7 +25,7 @@
                                             <select class="form-control" name="role_id" id="role_id">
                                                 <option value="">Select Role</option>
                                                 @forelse($roles as $r)
-                                                    <option value="{{$r->id}}" {{ old('role_id',$user->role_id)==$r->id?"selected":""}}> {{ $r->type}}</option>
+                                                    <option value="{{$r->id}}" {{ old('role_id',$user->role_id)==$r->id?"selected":""}}> {{ $r->name}}</option>
                                                 @empty
                                                     <option value="">No Role found</option>
                                                 @endforelse

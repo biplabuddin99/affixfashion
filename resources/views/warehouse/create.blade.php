@@ -1,7 +1,7 @@
   @extends('layout.app')
 
   @section('pageTitle',trans('Create Warehouse'))
-@section('pageSubTitle',trans('Create'))_
+@section('pageSubTitle',trans('Create'))
 
   @section('content')
     <section id="multiple-column-form">
@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.warehouse.store')}}">
+                            <form class="form" method="post" enctype="multipart/form-data" action="{{route('warehouse.store')}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-4 col-md-6 col-sm-12">

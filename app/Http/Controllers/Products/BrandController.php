@@ -50,7 +50,7 @@ class BrandController extends Controller
             $b->company_id=company()['company_id'];
             if($b->save()){
                Toastr::success('successfully Brand Create done!');
-                return redirect()->route(currentUser().'.brand.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('brand.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             }else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             }
@@ -96,7 +96,7 @@ class BrandController extends Controller
             $b= Brand::findOrFail(encryptor('decrypt',$id));
             $b->name=$request->brandName;
             if($b->save())
-                return redirect()->route(currentUser().'.brand.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('brand.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

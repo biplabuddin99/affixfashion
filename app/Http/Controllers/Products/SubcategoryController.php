@@ -51,7 +51,7 @@ class SubcategoryController extends Controller
             $subcat->name=$request->subCat;
             $subcat->company_id=company()['company_id'];
             if($subcat->save())
-                return redirect()->route(currentUser().'.subcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('subcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
@@ -98,7 +98,7 @@ class SubcategoryController extends Controller
             $subcat->category_id=$request->category;
             $subcat->name=$request->subCat;
             if($subcat->save())
-                return redirect()->route(currentUser().'.subcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('subcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

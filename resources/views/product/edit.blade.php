@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.product.update',encryptor('encrypt',$product->id))}}">
+                            <form class="form" method="post" enctype="multipart/form-data" action="{{route('product.update',encryptor('encrypt',$product->id))}}">
                                 @csrf
                                 @method('patch')
                                 <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$product->id)}}">
@@ -242,7 +242,7 @@
     }
 
     function deletedata(e){
-        $.get("{{route(currentUser().'.multiple_img')}}?id="+e, function(data, status){
+        $.get("{{route('multiple_img')}}?id="+e, function(data, status){
             alert("Image Deleted!");
             $('.del'+e).remove();
         });

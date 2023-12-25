@@ -12,7 +12,7 @@
                     <!-- table bordered -->
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <a class="float-end" href="{{route(currentUser().'.brand.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                            <a class="float-end" href="{{route('brand.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">{{__('#SL')}}</th>
@@ -26,7 +26,7 @@
                                 <th scope="row">{{ ++$loop->index }}</th>
                                     <td>{{$b->name}}</td>
                                     <td class="white-space-nowrap">
-                                        <a href="{{route(currentUser().'.brand.edit',encryptor('encrypt',$b->id))}}">
+                                        <a href="{{route('brand.edit',encryptor('encrypt',$b->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         {{-- <a href="javascript:void()" onclick="$('#form{{$b->id}}').submit()">

@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route(currentUser().'.color.update',encryptor('encrypt',$color->id))}}">
+                        <form class="form" method="post" action="{{route('color.update',encryptor('encrypt',$color->id))}}">
                             @csrf
                             @method('patch')
                             <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$color->id)}}">

@@ -14,7 +14,7 @@
                         <!-- table bordered -->
                         <div class="table-responsive">
                             <table class="table table-bordered mb-0">
-                            <a class="float-end" href="{{route(currentUser().'.category.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                            <a class="float-end" href="{{route('category.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                                 <thead>
                                     <tr>
                                         <th scope="col">{{__('#SL')}}</th>
@@ -30,13 +30,13 @@
                                         <td>{{$cat->category}} ({{$cat->products->count()}})</td>
                                         <td><img width="80px" height="40px" class="float-first" src="{{asset('images/category/'.company()['company_id'].'/'.$cat->image)}}" alt=""></td>
                                         <td class="white-space-nowrap">
-                                            <a href="{{route(currentUser().'.category.edit',encryptor('encrypt',$cat->id))}}">
+                                            <a href="{{route('category.edit',encryptor('encrypt',$cat->id))}}">
                                                 <i class="bi bi-pencil-square"></i>
                                             </a>
                                             <a href="javascript:void()" onclick="showConfirmation({{$cat->id}})">
                                                 <i class="bi bi-trash" style='color:red'></i>
                                             </a>
-                                            <form id="form{{$cat->id}}" action="{{route(currentUser().'.category.destroy',encryptor('encrypt',$cat->id))}}" method="post">
+                                            <form id="form{{$cat->id}}" action="{{route('category.destroy',encryptor('encrypt',$cat->id))}}" method="post">
                                                 @csrf
                                                 @method('delete')
                                                 

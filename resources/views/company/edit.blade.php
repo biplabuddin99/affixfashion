@@ -9,7 +9,7 @@
               <div class="card">
                   <div class="card-content">
                       <div class="card-body">
-                          <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.company.update',encryptor('encrypt',$company->id))}}">
+                          <form class="form" method="post" enctype="multipart/form-data" action="{{route('company.update',encryptor('encrypt',$company->id))}}">
                               @csrf
                               @method('patch')
                               <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$company->id)}}">

@@ -51,7 +51,7 @@ class ChildcategoryController extends Controller
             $childcat->name=$request->childcat;
             $childcat->company_id=company()['company_id'];
             if($childcat->save())
-                return redirect()->route(currentUser().'.childcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('childcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
@@ -98,7 +98,7 @@ class ChildcategoryController extends Controller
             $childcat->subcategory_id=$request->subcategory;
             $childcat->name=$request->childcat;
             if($childcat->save())
-                return redirect()->route(currentUser().'.childcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('childcategory.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

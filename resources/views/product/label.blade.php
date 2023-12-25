@@ -88,9 +88,9 @@
             var checkall=$('.checkall').is(":checked")?1:0;
 
             if(type=="qrcode")
-                var url="{{route(currentUser().'.qrcodepreview')}}";
+                var url="{{route('qrcodepreview')}}";
             else
-                var url="{{route(currentUser().'.barcodepreview')}}";
+                var url="{{route('barcodepreview')}}";
 
             $.ajax({
                 'url': url,
@@ -116,7 +116,7 @@
 
             var checkall=$('.checkall').is(":checked")?1:0;
             $.ajax({
-                'url': "{{route(currentUser().'.labelprint')}}",
+                'url': "{{route('labelprint')}}",
                 'type': 'GET',
                 'dataType' : 'json',
                 'data': {datas:get_data,checkall:checkall,ptype:ptype,ltype:ltype},

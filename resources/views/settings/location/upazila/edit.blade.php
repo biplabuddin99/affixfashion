@@ -10,7 +10,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.upazila.update',encryptor('encrypt',$upazila->id))}}">
+                            <form class="form" method="post" action="{{route('upazila.update',encryptor('encrypt',$upazila->id))}}">
                                 @csrf
                                 @method('PATCH')
                                 <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$upazila->id)}}">

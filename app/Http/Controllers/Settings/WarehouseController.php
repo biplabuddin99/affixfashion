@@ -54,7 +54,7 @@ class WarehouseController extends Controller
             $war->address=$request->address;
 
             if($war->save())
-                return redirect()->route(currentUser().'.warehouse.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('warehouse.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
@@ -105,7 +105,7 @@ class WarehouseController extends Controller
             $war->contact=$request->contact;
 
             if($war->save())
-                return redirect()->route(currentUser().'.warehouse.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('warehouse.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

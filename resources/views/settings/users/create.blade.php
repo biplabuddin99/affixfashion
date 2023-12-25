@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" enctype="multipart/form-data" action="{{route(currentUser().'.users.store')}}">
+                            <form class="form" method="post" enctype="multipart/form-data" action="{{route('users.store')}}">
                                 @csrf
                                 <div class="row">
                                     <div class="col-md-6 col-12">
@@ -20,7 +20,7 @@
                                             <select class="form-control" name="role_id" id="role_id">
                                                 <option value="">Select Role</option>
                                                 @forelse($roles as $r)
-                                                    <option value="{{$r->id}}" {{ old('role_id')==$r->id?"selected":""}}> {{ $r->type}}</option>
+                                                    <option value="{{$r->id}}" {{ old('role_id')==$r->id?"selected":""}}> {{ $r->name}}</option>
                                                 @empty
                                                     <option value="">No Role found</option>
                                                 @endforelse

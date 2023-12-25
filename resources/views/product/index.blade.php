@@ -12,7 +12,7 @@
                     <!-- table bordered -->
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <a class="float-end" href="{{route(currentUser().'.product.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                            <a class="float-end" href="{{route('product.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">{{__('#SL')}}</th>
@@ -45,13 +45,13 @@
                                     <td>@if($p->status == 1) Active @else Inactive @endif</td>
                                     <!-- or <td>{{ $p->status == 1?"Active":"Inactive" }}</td>-->
                                     <td class="white-space-nowrap">
-                                        <a href="{{route(currentUser().'.product.edit',encryptor('encrypt',$p->id))}}">
+                                        <a href="{{route('product.edit',encryptor('encrypt',$p->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="$('#form{{$p->id}}').submit()">
                                             <i class="bi bi-trash"></i>
                                         </a>
-                                        <form id="form{{$p->id}}" action="{{route(currentUser().'.product.destroy',encryptor('encrypt',$p->id))}}" method="post">
+                                        <form id="form{{$p->id}}" action="{{route('product.destroy',encryptor('encrypt',$p->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             

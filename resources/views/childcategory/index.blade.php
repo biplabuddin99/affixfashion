@@ -16,7 +16,7 @@
                         //print_r($childcategories);
                         ?>
                         <table class="table table-bordered mb-0">
-                            <a class="float-end" href="{{route(currentUser().'.childcategory.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                            <a class="float-end" href="{{route('childcategory.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">{{__('#SL')}}</th>
@@ -32,13 +32,13 @@
                                     <td>{{$child->sub_category?->name}}</td>
                                     <td>{{$child->name}}</td>
                                     <td class="white-space-nowrap">
-                                        <a href="{{route(currentUser().'.childcategory.edit',encryptor('encrypt',$child->id))}}">
+                                        <a href="{{route('childcategory.edit',encryptor('encrypt',$child->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="showConfirmation({{$child->id}})">
                                             <i class="bi bi-trash" style='color:red'></i>
                                         </a>
-                                        <form id="form{{$child->id}}" action="{{route(currentUser().'.childcategory.destroy',encryptor('encrypt',$child->id))}}" method="post">
+                                        <form id="form{{$child->id}}" action="{{route('childcategory.destroy',encryptor('encrypt',$child->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             

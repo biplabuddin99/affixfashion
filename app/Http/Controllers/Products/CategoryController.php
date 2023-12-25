@@ -53,7 +53,7 @@ class CategoryController extends Controller
             
             if($cat->save()){
                 $this->notice::success('Data Saved!');
-                return redirect()->route(currentUser().'.category.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('category.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             }else{
                 $this->notice::error('Please try again!','Fail');
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
@@ -106,7 +106,7 @@ class CategoryController extends Controller
                     $cat->image=$this->resizeImage($request->image,$path,true,200,200,false);
                 
             if($cat->save())
-                return redirect()->route(currentUser().'.category.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('category.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
