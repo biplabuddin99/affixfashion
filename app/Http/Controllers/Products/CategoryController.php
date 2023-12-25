@@ -51,12 +51,16 @@ class CategoryController extends Controller
             if($request->has('image'))
                 $cat->image=$this->resizeImage($request->image,'images/category/'.company()['company_id'],true,200,200,false);
             
-            if($cat->save())
+            if($cat->save()){
+                $this->notice::success('Data Saved!');
                 return redirect()->route(currentUser().'.category.index')->with($this->resMessageHtml(true,null,'Successfully created'));
-            else
+            }else{
+                $this->notice::error('Please try again!','Fail');
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
+            }
         }catch(Exception $e){
-            dd($e);
+            //dd($e);
+            $this->notice::error('Please try again!','Fail');
             return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }
     }

@@ -9,6 +9,9 @@ class DashboardController extends Controller
     /*
     * admin dashboard
     */
+    public function index(){
+        return view('dasbhoard.owner');
+    }
     public function adminDashboard(){
         return view('dasbhoard.admin');
     }

@@ -35,11 +35,13 @@ class AuthenticationController extends Controller
                     $user->email=$request->EmailAddress;
                     $user->password=Hash::make($request->password);
                     $user->company_id=$company->id;
-                    $user->role_id=2;
-                    if($user->save())
+                    $user->role_id=4;
+                    if($user->save()){
+                    \LogActivity::addToLog('User Create',$request->getContent(),'User');
                         return redirect('login')->with($this->resMessageHtml(true,null,'Successfully Registred'));
-                    else
+                    }else{
                         return redirect('login')->with($this->resMessageHtml(false,'error','Please try again'));
+                    }
                 }else
                     return redirect('login')->with($this->resMessageHtml(false,'error','Please try again'));
             }else
@@ -57,17 +59,17 @@ class AuthenticationController extends Controller
 
     public function signInCheck(SigninRequest $request){
         try{
-            $user=User::where('contact_no',$request->PhoneNumber)->first();
+            $user=User::where('contact_no',$request->PhoneNumber)->orWhere('email',$request->PhoneNumber)->first();
             if($user){
                 if(Hash::check($request->password , $user->password)){
                     $this->setSession($user);
                     return redirect()->route($user->role->identity.'.dashboard')->with($this->resMessageHtml(true,null,'Successfully login'));
                 }else
-                    return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your phone number or password is wrong!'));
+                    return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your password is wrong!'));
             }else
-                return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your phone number or password is wrong!'));
+                return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your phone number/Email is wrong!'));
         }catch(Exception $e){
-            //dd($e);
+            dd($e);
             return redirect()->route('login')->with($this->resMessageHtml(false,'error','Your phone number or password is wrong!'));
         }
     }
@@ -77,7 +79,7 @@ class AuthenticationController extends Controller
                 [
                     'userId'=>encryptor('encrypt',$user->id),
                     'userName'=>encryptor('encrypt',$user->name),
-                    'role'=>encryptor('encrypt',$user->role->type),
+                    'role'=>encryptor('encrypt',$user->role->name),
                     'roleIdentity'=>encryptor('encrypt',$user->role->identity),
                     'language'=>encryptor('encrypt',$user->language),
                     'companyId'=>encryptor('encrypt',$user->company_id),

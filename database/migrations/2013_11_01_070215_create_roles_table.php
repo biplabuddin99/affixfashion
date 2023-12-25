@@ -15,38 +15,38 @@ return new class extends Migration
     {
         Schema::create('roles', function (Blueprint $table) {
             $table->id();
-            $table->string('type',20)->unique();
+            $table->string('name',20)->unique();
             $table->string('identity',30)->unique();
             $table->timestamps();
         });
         DB::table('roles')->insert([
             [
-                'type' => 'Admin',
+                'name' => 'Admin',
                 'identity' => 'admin',
                 'created_at' => Carbon::now()
             ],
             [
-                'type' => 'Owner',
+                'name' => 'Owner',
                 'identity' => 'owner',
                 'created_at' => Carbon::now()
             ],
             [
-                'type' => 'Sales Manager',
+                'name' => 'Sales Manager',
                 'identity' => 'salesmanager',
                 'created_at' => Carbon::now()
             ],
             [
-                'type' => 'Sales Man',
+                'name' => 'Sales Man',
                 'identity' => 'salesman',
                 'created_at' => Carbon::now()
             ],
             [
-                'type' => 'Accounts',
+                'name' => 'Accounts',
                 'identity' => 'accounts',
                 'created_at' => Carbon::now()
             ],
             [
-                'type' => 'HR',
+                'name' => 'HR',
                 'identity' => 'hr',
                 'created_at' => Carbon::now()
             ]

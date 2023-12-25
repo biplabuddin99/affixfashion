@@ -2,9 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthenticationController as auth;
+use App\Http\Controllers\DashboardController as dashboard;
+use App\Http\Controllers\Settings\UserController as user;
+use App\Http\Controllers\Settings\RoleController as role;
+use App\Http\Controllers\Settings\PermissionController as permission;
+
 use App\Http\Controllers\DashboardController as dash;
 use App\Http\Controllers\Settings\CompanyController as company;
-use App\Http\Controllers\Settings\UserController as user;
 use App\Http\Controllers\Settings\ProfileController as profile;
 use App\Http\Controllers\Settings\AdminUserController as admin;
 use App\Http\Controllers\Settings\Location\CountryController as country;
@@ -47,15 +51,6 @@ use App\Http\Controllers\Vouchers\JournalVoucherController as journal;
 use App\Http\Controllers\Frontend\HomeController as home;
 use App\Http\Controllers\Frontend\CartController as cart;
 use App\Http\Controllers\Frontend\CheckoutController as checkout;
-/* Middleware */
-use App\Http\Middleware\isAdmin;
-use App\Http\Middleware\isOwner;
-use App\Http\Middleware\isSalesmanager;
-use App\Http\Middleware\isSalesman;
-use App\Http\Middleware\isAccounts;
-use App\Http\Middleware\isHr;
-use App\Http\Middleware\isfontCustomer;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,162 +84,94 @@ Route::post('/customer-login-check',[customer::class,'frontCustomerLoginCheck'])
 Route::get('/customer-logout',[customer::class,'frontsingOut'])->name('frontlogOut');
 
 /* backend route */
-Route::get('/register', [auth::class,'signUpForm'])->name('register');
-Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
-Route::get('/admin', [auth::class,'signInForm'])->name('signIn');
-Route::get('/login', [auth::class,'signInForm'])->name('login');
-Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
+Route::group(['middleware' => 'unknownUser'], function () {
+    Route::get('/register', [auth::class,'signUpForm'])->name('register');
+    Route::post('/register', [auth::class,'signUpStore'])->name('register.store');
+    Route::get('/admin', [auth::class,'signInForm'])->name('signIn');
+    Route::get('/login', [auth::class,'signInForm'])->name('login');
+    Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
+});
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
+Route::get('dashboard', [dashboard::class,'index'])->name('admin.dashboard');
+
+Route::middleware(['checkrole'])->prefix('admin')->group(function(){
+    Route::resource('company',company::class);
+    Route::resource('role', role::class);
+    Route::get('permission/{role}', [permission::class,'index'])->name('permission.list');
+    Route::post('permission/{role}', [permission::class,'save'])->name('permission.save');
+    Route::resource('users',user::class);
+    Route::resource('brand',brand::class);
+    Route::resource('size',size::class);
+    Route::resource('color',color::class);
+    Route::resource('branch',branch::class);
+    Route::resource('warehouse',warehouse::class);
+
+    //Owner profile
+    Route::get('/profile', [profile::class,'ownerProfile'])->name('owner.profile');
+    Route::post('/profile', [profile::class,'ownerProfile'])->name('owner.profile.update');
 
 
-Route::group(['middleware'=>isAdmin::class],function(){
-    Route::prefix('admin')->group(function(){
-        Route::get('/dashboard', [dash::class,'adminDashboard'])->name('admin.dashboard');
-        /* settings */
-        Route::get('/admincompany',[company::class,'admindex'])->name('admin.admincompany');
+    //Supplier and Customer
+    Route::resource('supplier',supplier::class);
+    Route::resource('customer',customer::class);
 
-        //Adnin profile
-        Route::get('/profile', [profile::class,'adminProfile'])->name('admin.profile');
-        Route::post('/profile', [profile::class,'adminProfile'])->name('admin.profile.update');
-        Route::post('/profile-update', [profile::class,'aProfileUpdate'])->name('admin.profile.up');
+    //Online Order
+    Route::resource('shippingcharge',shippingcharge::class);
+    
 
-       // Route::resource('/profile/update',profile::class,['as'=>'admin']);
+    //report
+    Route::get('/preport',[report::class,'preport'])->name('owner.preport');
+    Route::get('/sreport',[report::class,'stockreport'])->name('owner.sreport');
+    Route::get('/salreport',[report::class,'salesReport'])->name('owner.salreport');
+    
+    
 
-        Route::resource('users',user::class,['as'=>'admin']);
-        Route::resource('admin',admin::class,['as'=>'admin']);
-        Route::resource('country',country::class,['as'=>'admin']);
-        Route::resource('division',division::class,['as'=>'admin']);
-        Route::resource('district',district::class,['as'=>'admin']);
-        Route::resource('upazila',upazila::class,['as'=>'admin']);
-        Route::resource('thana',thana::class,['as'=>'admin']);
-        Route::resource('unit',unit::class,['as'=>'admin']);
-        Route::resource('currency',currency::class,['as'=>'admin']);
-        
-    });
+    //Product
+    Route::resource('category',category::class);
+    Route::resource('subcategory',subcat::class);
+    Route::resource('childcategory',childcat::class);
+    Route::resource('product',product::class);
+    Route::get('/multiple-image', [product::class,'multiple_img'])->name('owner.multiple_img');
+    Route::get('/plabel',[product::class,'label'])->name('plabel');
+    Route::get('/qrcodepreview',[product::class,'qrcodepreview'])->name('owner.qrcodepreview');
+    Route::get('/barcodepreview',[product::class,'barcodepreview'])->name('owner.barcodepreview');
+    Route::get('/labelprint',[product::class,'labelprint'])->name('owner.labelprint');
+    
+
+    //Accounts
+    Route::resource('master',master::class);
+    Route::resource('sub_head',sub_head::class);
+    Route::resource('child_one',child_one::class);
+    Route::resource('child_two',child_two::class);
+    Route::resource('navigate',navigate::class);
+
+    Route::get('incomeStatement',[statement::class,'index'])->name('owner.incomeStatement');
+    Route::get('incomeStatement_details',[statement::class,'details'])->name('owner.incomeStatement.details');
+
+    //Voucher
+    Route::resource('credit',credit::class);
+    Route::resource('debit',debit::class);
+    Route::get('get_head', [credit::class, 'get_head'])->name('owner.get_head');
+    Route::resource('journal',journal::class);
+    Route::get('journal_get_head', [journal::class, 'get_head'])->name('owner.journal_get_head');
+
+    //Purchase
+    Route::resource('purchase',purchase::class);
+    Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
+    Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('owner.pur.product_search_data');
+
+    //Sale
+    Route::resource('sales',sales::class);
+    Route::get('/product_sc', [sales::class,'product_sc'])->name('owner.sales.product_sc');
+    Route::get('/product_sc_d', [sales::class,'product_sc_d'])->name('owner.sales.product_sc_d');
+
+    //Transfer
+    Route::resource('transfer',transfer::class);
+    Route::get('/product_scr', [transfer::class,'product_scr'])->name('owner.transfer.product_scr');
+    Route::get('/product_scr_d', [transfer::class,'product_scr_d'])->name('owner.transfer.product_scr_d');
 });
-
-Route::group(['middleware'=>isOwner::class],function(){
-    Route::prefix('owner')->group(function(){
-        Route::get('/dashboard', [dash::class,'ownerDashboard'])->name('owner.dashboard');
-        Route::resource('company',company::class,['as'=>'owner']);
-        Route::resource('users',user::class,['as'=>'owner']);
-        Route::resource('brand',brand::class,['as'=>'owner']);
-        Route::resource('size',size::class,['as'=>'owner']);
-        Route::resource('color',color::class,['as'=>'owner']);
-        Route::resource('branch',branch::class,['as'=>'owner']);
-        Route::resource('warehouse',warehouse::class,['as'=>'owner']);
-
-        //Owner profile
-        Route::get('/profile', [profile::class,'ownerProfile'])->name('owner.profile');
-        Route::post('/profile', [profile::class,'ownerProfile'])->name('owner.profile.update');
-
-
-        //Supplier and Customer
-        Route::resource('supplier',supplier::class,['as'=>'owner']);
-        Route::resource('customer',customer::class,['as'=>'owner']);
-
-        //Online Order
-        Route::resource('shippingcharge',shippingcharge::class,['as'=>'owner']);
-        
-
-        //report
-        Route::get('/preport',[report::class,'preport'])->name('owner.preport');
-        Route::get('/sreport',[report::class,'stockreport'])->name('owner.sreport');
-        Route::get('/salreport',[report::class,'salesReport'])->name('owner.salreport');
-        
-        
-
-        //Product
-        Route::resource('category',category::class,['as'=>'owner']);
-        Route::resource('subcategory',subcat::class,['as'=>'owner']);
-        Route::resource('childcategory',childcat::class,['as'=>'owner']);
-        Route::resource('product',product::class,['as'=>'owner']);
-        Route::get('/multiple-image', [product::class,'multiple_img'])->name('owner.multiple_img');
-        Route::get('/plabel',[product::class,'label'])->name('owner.plabel');
-        Route::get('/qrcodepreview',[product::class,'qrcodepreview'])->name('owner.qrcodepreview');
-        Route::get('/barcodepreview',[product::class,'barcodepreview'])->name('owner.barcodepreview');
-        Route::get('/labelprint',[product::class,'labelprint'])->name('owner.labelprint');
-        
-
-        //Accounts
-        Route::resource('master',master::class,['as'=>'owner']);
-        Route::resource('sub_head',sub_head::class,['as'=>'owner']);
-        Route::resource('child_one',child_one::class,['as'=>'owner']);
-        Route::resource('child_two',child_two::class,['as'=>'owner']);
-        Route::resource('navigate',navigate::class,['as'=>'owner']);
-
-        Route::get('incomeStatement',[statement::class,'index'])->name('owner.incomeStatement');
-        Route::get('incomeStatement_details',[statement::class,'details'])->name('owner.incomeStatement.details');
-
-        //Voucher
-        Route::resource('credit',credit::class,['as'=>'owner']);
-        Route::resource('debit',debit::class,['as'=>'owner']);
-        Route::get('get_head', [credit::class, 'get_head'])->name('owner.get_head');
-        Route::resource('journal',journal::class,['as'=>'owner']);
-        Route::get('journal_get_head', [journal::class, 'get_head'])->name('owner.journal_get_head');
-
-        //Purchase
-        Route::resource('purchase',purchase::class,['as'=>'owner']);
-        Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
-        Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('owner.pur.product_search_data');
-
-        //Sale
-        Route::resource('sales',sales::class,['as'=>'owner']);
-        Route::get('/product_sc', [sales::class,'product_sc'])->name('owner.sales.product_sc');
-        Route::get('/product_sc_d', [sales::class,'product_sc_d'])->name('owner.sales.product_sc_d');
-
-        //Transfer
-        Route::resource('transfer',transfer::class,['as'=>'owner']);
-        Route::get('/product_scr', [transfer::class,'product_scr'])->name('owner.transfer.product_scr');
-        Route::get('/product_scr_d', [transfer::class,'product_scr_d'])->name('owner.transfer.product_scr_d');
-    });
-});
-
-Route::group(['middleware'=>isSalesmanager::class],function(){
-    Route::prefix('salesmanager')->group(function(){
-        Route::get('/dashboard', [dash::class,'salesmanagerDashboard'])->name('salesmanager.dashboard');
-
-        //Sale
-        Route::resource('sales',sales::class,['as'=>'salesmanager']);
-        Route::get('/product_sc', [sales::class,'product_sc'])->name('salesmanager.sales.product_sc');
-        Route::get('/product_sc_d', [sales::class,'product_sc_d'])->name('salesmanager.sales.product_sc_d');
-
-        //Customer
-        Route::resource('customer',customer::class,['as'=>'salesmanager']);
-        
-    });
-});
-
-Route::group(['middleware'=>isSalesman::class],function(){
-    Route::prefix('salesman')->group(function(){
-        Route::get('/dashboard', [dash::class,'salesmanDashboard'])->name('salesman.dashboard');
-        
-    });
-});
-
-Route::group(['middleware'=>isAccounts::class],function(){
-    Route::prefix('accounts')->group(function(){
-        Route::get('/dashboard', [dash::class,'accountsDashboard'])->name('accounts.dashboard');
-
-        //Accounts profile
-        Route::get('/profile', [profile::class,'ownerProfile'])->name('accounts.profile');
-        Route::post('/profile', [profile::class,'ownerProfile'])->name('accounts.profile.update');
-        
-    });
-});
-
-Route::group(['middleware'=>isHr::class],function(){
-    Route::prefix('hr')->group(function(){
-        Route::get('/dashboard', [dash::class,'hrDashboard'])->name('hr.dashboard');
-        
-    });
-});
-Route::group(['middleware'=>isfontCustomer::class],function(){
-    Route::prefix('frontcustomer')->group(function(){
-        Route::get('/customer-dashboard', [dash::class,'frontCustomer'])->name('frontcustomer.dashboard');
-        Route::post('/add-to-cart',[cart::class,'addToCart'])->name('add-to.cart');
-        
-    });
+Route::middleware(['checkauth'])->prefix('admin')->group(function(){
+    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
 });
 
 
