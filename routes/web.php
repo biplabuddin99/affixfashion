@@ -92,7 +92,7 @@ Route::group(['middleware' => 'unknownUser'], function () {
     Route::post('/login', [auth::class,'signInCheck'])->name('login.check');
 });
 Route::get('/logout', [auth::class,'singOut'])->name('logOut');
-Route::get('dashboard', [dashboard::class,'index'])->name('admin.dashboard');
+// Route::get('dashboard', [dashboard::class,'index'])->name('admin.dashboard');
 
 Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('company',company::class);
@@ -171,7 +171,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::get('/product_scr_d', [transfer::class,'product_scr_d'])->name('owner.transfer.product_scr_d');
 });
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
-    Route::get('dashboard', [dashboard::class,'index'])->name('admin.dashboard');
+    Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
 });
 
 
