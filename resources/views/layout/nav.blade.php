@@ -1,6 +1,6 @@
 <ul class="menu">
     <li class="sidebar-item">
-        <a href="{{route('dashboard')}}" class='sidebar-link'>
+        <a href="{{route('admin.dashboard')}}" class='sidebar-link'>
             <i class="bi bi-grid-fill"></i>
             <span>{{__('dashboard') }}</span>
         </a>
