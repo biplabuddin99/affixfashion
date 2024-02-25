@@ -14,7 +14,7 @@
                     {!!Session::get('response')['message']!!}
                 @endif
                 <div>
-                    <a class="float-end" href="{{route(currentUser().'.supplier.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                    <a class="float-end" href="{{route('supplier.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                 </div>
                 <!-- table bordered -->
                 <div class="table-responsive">
@@ -50,13 +50,13 @@
                                 <td>{{$sup->division?->name}}</td>
                                 <td>{{$sup->district?->name}}</td>
                                 <td class="white-space-nowrap">
-                                    <a href="{{route(currentUser().'.supplier.edit',encryptor('encrypt',$sup->id))}}">
+                                    <a href="{{route('supplier.edit',encryptor('encrypt',$sup->id))}}">
                                         <i class="bi bi-pencil-square"></i>
                                     </a>
                                     <a href="javascript:void()" onclick="$('#form{{$sup->id}}').submit()">
                                         <i class="bi bi-trash"></i>
                                     </a>
-                                    <form id="form{{$sup->id}}" action="{{route(currentUser().'.supplier.destroy',encryptor('encrypt',$sup->id))}}" method="post">
+                                    <form id="form{{$sup->id}}" action="{{route('supplier.destroy',encryptor('encrypt',$sup->id))}}" method="post">
                                         @csrf
                                         @method('delete')
                                     </form>

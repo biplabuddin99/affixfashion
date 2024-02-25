@@ -49,7 +49,7 @@ class ShippingChargeController extends Controller
             $b->status=1;
             if($b->save()){
                Toastr::success('successfully Create done!');
-                return redirect()->route(currentUser().'.shippingcharge.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('shippingcharge.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             }else{
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
             }
@@ -98,7 +98,7 @@ class ShippingChargeController extends Controller
             $b->company_id=company()['company_id'];
             $b->status=1;
             if($b->save())
-                return redirect()->route(currentUser().'.shippingcharge.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
+                return redirect()->route('shippingcharge.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

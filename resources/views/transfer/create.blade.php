@@ -11,7 +11,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="card-body">
-                            <form class="form" method="post" action="{{route(currentUser().'.transfer.store')}}">
+                            <form class="form" method="post" action="{{route('transfer.store')}}">
                                 @csrf
                                 <div class="row">
                                     @if( currentUser()=='owner')
@@ -280,7 +280,7 @@ $(function() {
           
             $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.transfer.product_scr')}}",
+                url: "{{route('transfer.product_scr')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {
@@ -347,7 +347,7 @@ function return_row_with_data(item_id){
 
     $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.transfer.product_scr_d')}}",
+                url: "{{route('transfer.product_scr_d')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {

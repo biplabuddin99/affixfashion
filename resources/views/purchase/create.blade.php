@@ -16,10 +16,10 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route(currentUser().'.purchase.store')}}">
+                        <form class="form" method="post" action="{{route('purchase.store')}}">
                             @csrf
                             <div class="row">
-                                @if( currentUser()=='owner')
+                                @if( =owner')
                                     <div class="col-md-2 mt-2">
                                         <label for="branch_id" class="float-end" ><h6>Branches Name<span class="text-danger">*</span></h6></label>
                                     </div>
@@ -256,7 +256,7 @@ $(function() {
             
             $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.pur.product_search')}}",
+                url: "{{route('pur.product_search')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {
@@ -321,7 +321,7 @@ function return_row_with_data(item_id){
   $("#item_search").addClass('ui-autocomplete-loader-center');
     $.ajax({
             autoFocus:true,
-                url: "{{route(currentUser().'.pur.product_search_data')}}",
+                url: "{{route('pur.product_search_data')}}",
                 method: 'GET',
                 dataType: 'json',
                 data: {

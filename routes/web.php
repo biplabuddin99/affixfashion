@@ -120,9 +120,9 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     
 
     //report
-    Route::get('/preport',[report::class,'preport'])->name('owner.preport');
-    Route::get('/sreport',[report::class,'stockreport'])->name('owner.sreport');
-    Route::get('/salreport',[report::class,'salesReport'])->name('owner.salreport');
+    Route::get('/preport',[report::class,'preport'])->name('preport');
+    Route::get('/sreport',[report::class,'stockreport'])->name('sreport');
+    Route::get('/salreport',[report::class,'salesReport'])->name('salreport');
     
     
 
@@ -131,7 +131,7 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
     Route::resource('subcategory',subcat::class);
     Route::resource('childcategory',childcat::class);
     Route::resource('product',product::class);
-    Route::get('/multiple-image', [product::class,'multiple_img'])->name('owner.multiple_img');
+    Route::get('/multiple-image', [product::class,'multiple_img'])->name('multiple_img');
     Route::get('/plabel',[product::class,'label'])->name('plabel');
     Route::get('/qrcodepreview',[product::class,'qrcodepreview'])->name('owner.qrcodepreview');
     Route::get('/barcodepreview',[product::class,'barcodepreview'])->name('owner.barcodepreview');
@@ -157,21 +157,26 @@ Route::middleware(['checkrole'])->prefix('admin')->group(function(){
 
     //Purchase
     Route::resource('purchase',purchase::class);
-    Route::get('/product_search', [purchase::class,'product_search'])->name('owner.pur.product_search');
-    Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('owner.pur.product_search_data');
 
     //Sale
     Route::resource('sales',sales::class);
-    Route::get('/product_sc', [sales::class,'product_sc'])->name('owner.sales.product_sc');
-    Route::get('/product_sc_d', [sales::class,'product_sc_d'])->name('owner.sales.product_sc_d');
 
     //Transfer
     Route::resource('transfer',transfer::class);
-    Route::get('/product_scr', [transfer::class,'product_scr'])->name('owner.transfer.product_scr');
-    Route::get('/product_scr_d', [transfer::class,'product_scr_d'])->name('owner.transfer.product_scr_d');
 });
 Route::middleware(['checkauth'])->prefix('admin')->group(function(){
     Route::get('dashboard', [dashboard::class,'index'])->name('dashboard');
+    //Purchase
+    Route::get('/product_search', [purchase::class,'product_search'])->name('pur.product_search');
+    Route::get('/product_search_data', [purchase::class,'product_search_data'])->name('pur.product_search_data');
+
+    //Sales
+    Route::get('/product_sc', [sales::class,'product_sc'])->name('sales.product_sc');
+    Route::get('/product_sc_d', [sales::class,'product_sc_d'])->name('sales.product_sc_d');
+
+    //Transfer
+    Route::get('/product_scr', [transfer::class,'product_scr'])->name('transfer.product_scr');
+    Route::get('/product_scr_d', [transfer::class,'product_scr_d'])->name('transfer.product_scr_d');
 });
 
 

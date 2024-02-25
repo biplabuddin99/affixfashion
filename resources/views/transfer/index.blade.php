@@ -14,7 +14,7 @@
                     {!!Session::get('response')['message']!!}
                 @endif
                 <div>
-                    <a class="float-end" href="{{route(currentUser().'.transfer.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                    <a class="float-end" href="{{route('transfer.create')}}"style="font-size:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                 </div>
                 <!-- table bordered -->
                 <div class="table-responsive">

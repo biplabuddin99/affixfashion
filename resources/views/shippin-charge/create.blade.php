@@ -11,7 +11,7 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form" method="post" action="{{route(currentUser().'.shippingcharge.store')}}">
+                        <form class="form" method="post" action="{{route('shippingcharge.store')}}">
                             @csrf
                             <div class="row">                               
                                 <div class="col-md-6 col-12">

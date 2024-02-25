@@ -168,7 +168,7 @@ class SalesController extends Controller
                     }
                 }
                 
-                return redirect()->route(currentUser().'.sales.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('sales.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             }else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

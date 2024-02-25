@@ -12,7 +12,7 @@
                     <!-- table bordered -->
                     <div class="table-responsive">
                         <table class="table table-bordered mb-0">
-                            <a class="float-end" href="{{route(currentUser().'.shippingcharge.create')}}"style="font-shippingcharge:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
+                            <a class="float-end" href="{{route('shippingcharge.create')}}"style="font-shippingcharge:1.7rem"><i class="bi bi-plus-square-fill"></i></a>
                             <thead>
                                 <tr>
                                     <th scope="col">{{__('#SL')}}</th>
@@ -28,13 +28,13 @@
                                     <td>{{$b->location}}</td>
                                     <td>{{$b->charge}}</td>
                                     <td class="white-space-nowrap">
-                                        <a href="{{route(currentUser().'.shippingcharge.edit',encryptor('encrypt',$b->id))}}">
+                                        <a href="{{route('shippingcharge.edit',encryptor('encrypt',$b->id))}}">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
                                         <a href="javascript:void()" onclick="showConfirmation({{$b->id}})">
                                             <i class="bi bi-trash" style='color:red'></i>
                                         </a>
-                                        <form id="form{{$b->id}}" action="{{route(currentUser().'.shippingcharge.destroy',encryptor('encrypt',$b->id))}}" method="post">
+                                        <form id="form{{$b->id}}" action="{{route('shippingcharge.destroy',encryptor('encrypt',$b->id))}}" method="post">
                                             @csrf
                                             @method('delete')
                                             

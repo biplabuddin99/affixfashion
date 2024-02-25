@@ -166,7 +166,7 @@ class PurchaseController extends Controller
                     }
                 }
                 
-                return redirect()->route(currentUser().'.purchase.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('purchase.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             }else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

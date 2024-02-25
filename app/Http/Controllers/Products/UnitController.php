@@ -48,7 +48,7 @@ class UnitController extends Controller
             $u= new Unit;
             $u->name=$request->unitName;
             if($u->save())
-                return redirect()->route(currentUser().'.unit.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('unit.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
@@ -93,7 +93,7 @@ class UnitController extends Controller
             $u= Unit::findOrFail(encryptor('decrypt',$id));
             $u->name=$request->unitName;
             if($u->save())
-                return redirect()->route(currentUser().'.unit.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('unit.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

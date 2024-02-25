@@ -75,7 +75,7 @@ class SupplierController extends Controller
             //$sup->branch_id?branch()['branch_id']:null;
            
             if($sup->save())
-                return redirect()->route(currentUser().'.supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('.supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){
@@ -138,7 +138,7 @@ class SupplierController extends Controller
             $sup->branch_id= $request->branch_id;
            
             if($sup->save())
-                return redirect()->route(currentUser().'.supplier.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
+                return redirect()->route('supplier.index')->with($this->resMessageHtml(true,null,'Successfully Updated'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

@@ -114,13 +114,13 @@
     </li>
 
     
-    <li class="sidebar-item has-sub">
+    {{-- <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-sign-turn-right-fill"></i><span>{{__('Transfer')}}</span></a>
-        {{-- <ul class="submenu">
+        <ul class="submenu">
             <li class="py-1"><a href="{{route('transfer.index')}}">{{__('Transfer list')}}</a></li>
             <li class="py-1"><a href="{{route('transfer.create')}}">{{__('Transfer')}}</a></li>
-		</ul>    --}}
-    </li>
+		</ul>   
+    </li> --}}
 
     <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-people-fill"></i><span>{{__('Supplier')}}</span>
@@ -178,11 +178,11 @@
     <li class="sidebar-item has-sub">
         <a href="#" class='sidebar-link'><i class="bi bi-card-checklist"></i><span>{{__('Report')}}</span>
         </a>
-        {{-- <ul class="submenu">
+        <ul class="submenu">
             <li class="py-1"><a href="{{route('preport')}}" >{{__('Purchase Report')}}</a></li>
             <li class="py-1"><a href="{{route('sreport')}}" >{{__('Stock Report')}}</a></li>
             <li class="py-1"><a href="{{route('salreport')}}" >{{__('Sales Report')}}</a></li>
 		</ul>
-         --}}
+        
     </li>
 </ul>
