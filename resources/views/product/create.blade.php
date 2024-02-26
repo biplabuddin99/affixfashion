@@ -157,8 +157,8 @@
                                             <select class="form-select" name="show_frontend">
                                                 <optgroup label="Figures">
                                                     <option value="0">Select</option>
-                                                    <option value="1">Men's</option>
-                                                    <option value="2">Wonen's</option>
+                                                    <option value="1">Honey</option>
+                                                    <option value="2">Nuts</option>
                                                     <option value="3">Kids</option>
                                                     <option value="4">Accessories</option>
                                                     <option value="5">Best Seller</option>

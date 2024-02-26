@@ -19,7 +19,7 @@
                         <form class="form" method="post" action="{{route('purchase.store')}}">
                             @csrf
                             <div class="row">
-                                @if( =owner')
+                                {{-- @if( currentUser()=='owner') --}}
                                     <div class="col-md-2 mt-2">
                                         <label for="branch_id" class="float-end" ><h6>Branches Name<span class="text-danger">*</span></h6></label>
                                     </div>
@@ -37,9 +37,9 @@
                                         <span class="text-danger"> {{ $errors->first('branch_id') }}</span>
                                     @endif
                                     
-                                @else
+                                {{-- @else
                                     <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
-                                @endif
+                                @endif --}}
                                 
                                     
                                 <div class="col-md-2 mt-2">

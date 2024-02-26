@@ -25,10 +25,10 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        if( currentUser()=='owner')
+        // if( currentUser()=='owner')
             $suppliers = supplier::where(company())->paginate(10);
-        else
-            $suppliers = supplier::where(company())->where(branch())->paginate(10);
+        // else
+        //     $suppliers = supplier::where(company())->where(branch())->paginate(10);
 
         return view('supplier.index',compact('suppliers'));
     }
@@ -75,7 +75,7 @@ class SupplierController extends Controller
             //$sup->branch_id?branch()['branch_id']:null;
            
             if($sup->save())
-                return redirect()->route('.supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));
+                return redirect()->route('supplier.index')->with($this->resMessageHtml(true,null,'Successfully created'));
             else
                 return redirect()->back()->withInput()->with($this->resMessageHtml(false,'error','Please try again'));
         }catch(Exception $e){

@@ -11,7 +11,7 @@ Single Product page
                     <div class="product-single-img">
                         <div class="product-active owl-carousel">
                             <div class="item">
-                                <img src="{{ asset('images/product') }}/{{ $product->image }}" alt="">
+                                <img src="{{ asset('images/product') }}/{{ $product?->image }}" alt="">
                             </div>
                             @foreach ($product->productImages as $image)
                             <div class="item">

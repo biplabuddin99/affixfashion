@@ -17,7 +17,7 @@
                                 <input type="hidden" name="uptoken" value="{{encryptor('encrypt',$supplier->id)}}">
                                 <div class="row">
 
-                                        @if( currentUser()=='owner')
+                                        {{-- @if( currentUser()=='owner') --}}
                                             <div class="col-md-4 col-12">
                                                 <div class="form-group">
                                                     <label for="branch_id">Branches Name</label>
@@ -33,9 +33,9 @@
                                                     @endif
                                                 </div>
                                             </div>
-                                        @else
+                                        {{-- @else
                                             <input type="hidden" value="{{ branch()['branch_id']}}" name="branch_id">
-                                        @endif
+                                        @endif --}}
 
                                     <div class="col-md-4 col-12">
                                         <div class="form-group">
